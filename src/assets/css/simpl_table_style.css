@@ -1,0 +1,350 @@
+.wba-n .row{
+  gap: 0.5rem;
+}
+.wba-n .rw-title{
+  margin-left: 0.5rem;
+  margin-right: auto;
+}
+.wba-n .row .btn{
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.wba-n .row .btn.btn-print{
+  color: var(--sg-bglight);
+}
+.wba-n .row .btn.btn-print path{
+  stroke: var(--sg-bglight);
+}
+
+/* .sim-table{
+    max-width: 100%;
+}
+.sim-table table {
+  margin-top: 100px;
+  min-width: 1150px;
+  max-width: 1280px;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.sim-table th, td {
+  padding: 16px 24px;
+  text-align: left;
+}
+.sim-table th{
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+.sim-table thead th {
+  background-color: var(--sg-maincolor-bluedark);
+  color: #fff;
+}
+.sim-table thead th.thf{
+  background: var(--colorText-00);
+}
+
+.sim-table tbody tr:nth-child(odd) {
+ background-color: #f8f9fa;
+}
+
+.sim-table tbody tr:nth-child(even) {
+  background-color: #e9ecef;
+}
+.sim-table td .des09stb{
+  white-space: pre-line;
+}
+.sim-table .mxc{
+    display: block;
+    min-width: max-content;
+}
+.sim-table .minx{
+    min-width: 150px;
+}
+.tcenter{
+    text-align: center;
+} */
+
+/* @media print {
+  .wba-n {
+    display: none;
+  }
+  .sim-table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+  }
+  .sim-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+  }
+  .sim-table thead th.thf {
+    background: var(--colorText-00);
+  }
+  @page {
+      size: landscape;
+      margin: 10mm;
+  }
+  nav, .btn-share, .btn-print, p[style*="opacity: 0.5"] {
+      display: none !important;
+  }
+  body {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+  }
+} */
+
+/* =========================
+   REPORT CONTAINER
+========================= */
+
+.sim-report {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* =========================
+  DESKTOP TABLE
+========================= */
+.sim-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.sim-table table {
+    width: 100%;
+    min-width: 1150px;
+    max-width: 1280px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.sim-table th,
+.sim-table td {
+    padding: 16px 24px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.sim-table th {
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+.sim-table thead th {
+    background-color: var(--sg-maincolor-bluedark);
+    color: #fff;
+}
+
+.sim-table tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.sim-table tbody tr:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+.sim-table tfoot th {
+  color: var(--sg-bglight);
+    background: var(--colorText-00);
+}
+
+.sim-table .des09stb {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    margin-top: 5px;
+}
+
+.sim-table .empty-cell {
+    text-align: center;
+    padding: 30px;
+    color: #64748b;
+}
+.leader-vs a:hover{
+  text-decoration: underline;
+}
+/* =========================
+   MOBILE REPORT
+========================= */
+
+.mobile-report {
+    display: none;
+}
+
+@media screen and (max-width: 650px) {
+
+    .sim-report {
+        padding: 0.75rem;
+    }
+
+    .sim-table {
+        display: none;
+    }
+
+    .mobile-report {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .report-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .report-card-head {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+        background: #f3f6fa;
+    }
+
+    .report-card-head span {
+        min-width: 30px;
+        font-size: 0.8rem;
+        color: #64748b;
+    }
+
+    .report-card-head h3 {
+        font-size: 1rem;
+        margin: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .report-description {
+        padding: 0 14px;
+        font-size: 0.9rem;
+        color: #64748b;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+    }
+
+    .report-card-body {
+        padding: 10px 14px;
+    }
+
+    .report-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 10px 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .report-field:last-child {
+        border-bottom: none;
+    }
+
+    .report-field span {
+        color: #64748b;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+
+    .report-field strong {
+        font-size: 0.85rem;
+        text-align: right;
+        overflow-wrap: anywhere;
+    }
+
+    .mobile-report-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        padding: 15px 5px;
+        font-size: 0.8rem;
+    }
+
+    .empty-report {
+        padding: 30px;
+        text-align: center;
+        color: #64748b;
+    }
+}
+
+
+@media print {
+
+    @page {
+        size: A4 landscape;
+        margin: 10mm;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .wba-n,
+    .btn-share,
+    .btn-print,
+    .mobile-report,
+    p[style*="opacity: 0.5"] {
+        display: none !important;
+    }
+
+    .sim-report {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .sim-table {
+        display: block !important;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .sim-table table {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        margin: 0;
+        table-layout: fixed;
+        border-collapse: collapse;
+        font-size: 9pt;
+    }
+
+    .sim-table th,
+    .sim-table td {
+        padding: 8px 6px;
+        font-size: 9pt;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .sim-table thead {
+        display: table-header-group;
+    }
+
+    .sim-table tfoot {
+        display: table-footer-group;
+    }
+
+    .sim-table tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .sim-table tbody tr:nth-child(odd) {
+        background-color: #f8f9fa !important;
+    }
+
+    .sim-table tbody tr:nth-child(even) {
+        background-color: #e9ecef !important;
+    }
+
+    .sim-table thead th {
+        background: var(--sg-maincolor-bluedark) !important;
+        color: white !important;
+    }
+
+    .sim-table tfoot th {
+        background: var(--colorText-00) !important;
+    }
+}

@@ -1,0 +1,370 @@
+.admin-dashboard{
+    margin: 0 0.8rem;
+}
+.admin-dashboard .adnav{
+    margin-top: 0rem;
+}
+.admin-dashboard .tb-section{
+    margin-top: 0.8rem;
+}
+.admin-dashboard .sp02{
+    margin-top: 0rem;
+    margin: 0.8rem;
+    overflow: hidden;
+    border-radius: 0.2rem;
+}
+.admin-content{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.adincard{
+    max-width: 1200px;
+    /* margin: 0 1rem; */
+    margin-top: 2rem;
+    background: var(--sg-bglight);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+.adincard .pr-main{
+    width: 150px;
+    height: 150px;
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+.adincard .pr-img{
+    width: 100%;
+    margin-top: 0.3rem;
+}
+.adincard .box{
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+}
+.adincard .sub{
+    width: calc(100% - 150px);
+}
+.adincard .sub .sub-box{
+    display: flex;
+    flex-direction: column;
+}
+.adincard .sub h2{
+    font-size: 1.25rem;
+}
+.adincard .sub h2::first-letter{
+    text-transform: uppercase;
+}
+.adincard .sub p{
+    font-size: 1.1rem;
+}
+.adincard .adincard-action{
+    padding-top: 1.5rem;
+}
+.adincard .adincard-action .btn{
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    border-radius: 50rem;
+    margin-left: auto;
+    margin-bottom: -0.8rem;
+    font-size: 1rem;
+    color: var(--sg-bglight);
+}
+.adincard .adincard-action p span{
+    font-size: 0.8rem;
+}
+.adincard .adincard-action .btn path{
+    /* fill:  var(--sg-bglight); */
+    stroke: var(--sg-bglight);
+}
+.adincardbox-action{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: max-content;
+    height: max-content;
+    border-radius: 50rem;
+    overflow: hidden;
+    background: var(--sg-color-brand);
+}
+.adincardbox-action path{
+    stroke: var(--sg-bglight);
+}
+.adincardbox-action .icon{
+    cursor: pointer;
+}
+.admin-dashboard .adnvul .adnvul-row .adnvulrw-bx blockquote h2{
+    font-size: 2rem;
+}
+.admin-dashboard .adnvul .adnvul-row{
+    width: 100%;
+    max-width: initial;
+    min-width: 250px;
+}
+.admin-dashboard .adnvul .adnvul-row:first-child{
+    margin-left: 0rem;
+}
+.admin-dashboard .adnav-head{
+    margin: 0rem;
+}
+/* ==========this is task today====================== */
+.tkt{
+    display: block;
+}
+.tkt .tkt-bx{
+    margin-top: 0.8rem;
+   display: flex;
+   flex-direction: column;
+   gap: 0.8rem;
+   padding: 0.8rem;
+   border-radius: 0.8rem;
+   background: var(--sg-bglight);
+   padding-bottom: 1rem;
+}
+.tkt .tkt-bx .tkth-bx{
+    gap: 0.5rem;
+    min-height: 40px;
+}
+.tkt .tkt-bx .tkth-bx .df-l{
+    gap: 0.4rem;
+}
+.tkt .tkt-bx .tkth-bx .icon{
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 3px;
+    border-radius: 50rem;
+    background: var(--colorText-00);
+}
+.tkt .tkt-bx .tkth-bx h2{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.tkt .tkt-bx .tkth-bx .icon svg path{
+    stroke: var(--sg-bglight);
+}
+.tkt .tkt-bx .tkth-bx .result.btn{
+    border-radius: 0.2rem;
+    font-weight: bold;
+    background: var(--sg-bgblack);
+}
+.tkt .tkt-bx ul{
+    gap: 0.8rem;
+    display: flex;
+    flex-direction: column;
+}
+.tkt .tkt-bx ul li .icon{
+    min-width: 1.2rem;
+    min-height: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 3px;
+    border-radius: 50rem;
+    background: var(--sg-bgblack);
+}
+.tkt .tkt-bx ul li .icon.active{
+    background: var(--sg-color-brand);
+}
+.tkt .tkt-bx ul li .icon.active svg path{
+    stroke: var(--sg-bglight) ;
+    fill: var(--sg-bglight);
+}
+.tkt .tkt-bx ul li .txt{
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+.tkt .tkt-bx ul li h2{
+    font-weight: 400;
+}
+/* .tkt .tkt-bx ul li .txt path{
+    stroke: var(--sg-bglight);
+    fill: var(--sg-bglight);
+} */
+.tkt .tkt-bx ul li .rate.btn{
+    font-size: 0.8rem;
+    height: 1.8rem;
+    border-radius: 50rem;
+    background: var(--sg-bg-in);
+    font-weight: bold;
+}.tkt .tkt-bx ul li .rate.btn p{
+    font-weight: bold;
+}
+.tkt .tkt-bx .tktf-bx{
+    padding-top: 1rem;
+    border-top: 1px solid var(--colorBorder-00);
+}
+.tkt .tkt-bx .tktf-bx .btn{
+    width: 100%;
+    height: 2rem;
+    padding: 0rem;
+    color: var(--sg-color-brand);
+    font-weight: 550;
+    cursor: pointer;
+    background: var(--sg-bglight);
+}
+.tkt .tkt-bx .tktf-bx .btn:hover{
+    text-decoration: underline;
+}
+
+/* ===========this is task action============ */
+.task-action-section table tr td:last-child:hover{
+    background: var(--sg-bglight) !important;
+}
+.task-action-section table tr td:last-child:hover::before,
+.task-action-section table tr td:last-child:active span::before,
+.task-action-section table tr td:last-child:active span::after{
+    display: none !important;
+}
+.task-action-section table tr td:last-child .td-action{
+    max-width: 300px;
+    margin-left: auto;
+}
+body .task-action-section table tr td:last-child .btn{
+    border-radius: 50rem !important;
+    border: 1px solid var(--sg-color-brand);
+    padding: 0rem 0.8rem !important;
+    height: 2.8rem !important;
+    min-width: 106px !important;
+    width: max-content !important;
+}
+body .task-action-section table tr td:last-child .btn:last-child{
+    color: var(--sg-bglight) !important;
+    background: var(--sg-color-brand) !important;
+}
+body .task-action-section .btn-categorycount{
+    /* padding: 0.2rem 0.5rem;
+    border-radius: 50rem; */
+    font-size: 0.9rem !important;
+    color: var(--sg-color-text);
+    /* background: var(--sg-bgblack); */
+}
+body #main-tb.task-action-section table tr td:last-child .btn svg{
+    min-width: 1.2rem;
+}
+body .task-action-section table tr td:last-child .btn:last-child svg path{
+    stroke: var(--sg-bglight) !important;
+    /* fill: var(--sg-bglight); */
+}
+.tks-bx{
+    margin-top: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background: var(--sg-bglight);
+    padding-bottom: 1rem;
+}
+.tks-bx ul li img{
+    max-width: 100px;
+    aspect-ratio: 1/1;
+}
+body .task-action-section .tb-section-body{
+    margin: 0 auto !important;
+}
+@media only screen and (max-width: 1200px) {
+    .adincard{
+        margin: 0rem 0.8rem;
+        margin-top: 0.8rem;
+    }
+    .adnav .adnav-head{
+        margin: 0rem 0.8rem;
+    }
+    .admin-dashboard .adnvul .adnvul-row:first-child{
+        margin-left: 0.8rem;
+    }
+    .admin-dashboard .adnvul .adnvul-row:last-child{
+       margin-right: 0.8rem;
+    }
+    .tkt{
+        margin: 0rem 0.8rem;
+    }
+    #main-tb.tb-section{
+        width: calc(100% - 1.6rem);
+        margin: 2rem 0.8rem;
+    }
+    .admin-content{
+
+    }
+}
+@media only screen and (max-width: 650px){
+    .admin-dashboard .adnav .nall05 .adnvul,
+    .admin-dashboard .adnav .ncl05 .adnvul{
+        margin: 0 0.8rem;
+        display: grid;
+        gap: 0.8rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .admin-dashboard .adnav .nall05 .adnvul .adnvul-row,
+    .admin-dashboard .adnav .ncl05 .adnvul .adnvul-row{
+        min-width: initial;
+    }
+    .admin-dashboard .adnvul .adnvul-row:first-child{
+        margin-left: 0rem;
+    }
+    .admin-dashboard .adnvul .adnvul-row:last-child{
+        margin-right: 0rem;
+    }
+    .tkt .tkt-bx ul li .rate.btn{
+        display: none;
+    }
+    .tkt .tkt-bx .tkth-bx .result.btn{
+        border-radius: 50rem;
+        background: var(--colorText-00);
+        font-size: 0.9rem;
+        color: var(--sg-bglight);
+        font-weight: 400;
+        height: 2rem;
+    }
+    .admin-dashboard .sp02{
+
+    }
+}
+@media only screen and (max-width: 500px){
+    .adincard .pr-main{
+        width: 100px;
+        height: 100px;
+    }
+    .adincard .sub{
+        width: calc(100% - 100px);
+    }
+}
+@media only screen and (max-width: 450px){
+    .adnav .adnav-head{
+        margin: 0rem 0.5rem;
+    }
+    .adincard{
+        margin: 0rem 0.5rem;
+        margin-top: 1rem;
+    }
+    .admin-dashboard .adnav .nall05 .adnvul, .admin-dashboard .adnav .ncl05 .adnvul{
+        margin: 0rem 0.5rem;
+        gap: 0.5rem;
+    }
+    .tkt{
+        margin: 0rem 0.5rem;
+    }
+}
+@media only screen and (max-width: 400px){
+    .adincard .pr-main{
+        width: 70px;
+        height: 70px;
+        overflow: initial;
+    }
+    .adincard .pr-img{
+        margin-top: 0rem;
+        margin-bottom: -1rem;
+    }
+    .adincard .pr-main img{
+        scale: 1.3;
+        transform: translateY(-10%);
+    }
+    .adincardbox-action{
+        display: none;
+    }
+    .adincard .sub{
+        width: calc(100% - 70px);
+    }
+}

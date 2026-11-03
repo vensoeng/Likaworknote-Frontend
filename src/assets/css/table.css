@@ -1,0 +1,608 @@
+/* ===================this is nav==============================> */
+.adnav{
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+    margin-top: 1.5rem;
+    position: relative;
+}
+.adnav-unactive{
+    opacity: 0.55;
+}
+.adnav-unactive .adnvulrw-bx::after{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0rem;
+    inset: 0;
+    background: transparent;
+}
+.adnav-head{
+    margin: 0rem 1rem;
+}
+.adnav-head h2{
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.adnav-head .icon{
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 3px;
+    border-radius: 50rem;
+    background: var(--colorText-00);
+}
+.adnav-head .icon path{
+    stroke: var(--sg-bglight);
+}
+.adnav-head .btn{
+    cursor: pointer;
+    gap: 0.5rem;
+    color: var(--sg-bglight);
+}
+.adnav-head .btn path{
+    stroke: var(--sg-bglight) !important;
+}
+
+.adnvul{
+    overflow: hidden;
+    overflow-x: scroll;
+    display: flex;
+    justify-content: left;
+    gap: 0.8rem;
+}
+.adnvul .adnvul-row{
+    overflow: hidden;
+    border-radius: 0.8rem;
+    min-width: 350px;
+    max-width: 250px;
+    background: var(--sg-bglight);
+}
+.adnvul .adnvul-row:first-child{
+    margin-left: 1rem;
+}
+.adnvul .adnvul-row .adnvulrw-bx{
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
+}
+.adnvul .adnvul-row .adnvulrw-bx .adnvulrwbxh{
+    height: 40px;
+    gap: 0.5rem;
+    font-size: 1.25rem;
+}
+.adnvul .adnvul-row .adnvulrw-bx .adnvulrwbxh h2{
+    font-size: 1rem;
+    font-weight: bold;
+}
+.adnvul .adnvul-row .adnvulrw-bx blockquote{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.adnvul .adnvul-row .adnvulrw-bx blockquote p{
+    line-height: 1.5;
+}
+.adnvul .adnvul-row .adnvulrw-action .btn{
+    cursor: pointer;
+    gap: 0.4rem;
+    font-size: 1rem;
+    color: var(--sg-color-brand);
+    background: var(--sg-bglight);
+    margin-right: 0.5rem;
+    padding: 0.5rem 0rem;
+}
+.adnvul .adnvul-row .adnvulrw-action .btn path{
+    stroke: var(--sg-color-brand);
+}
+.adnvul .adnvul-row .adnvulrw-action .btn.un-active{
+    user-select: none;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    opacity: 0.55;
+}
+.adnvul .adnvul-row .adnvulrw-action .btn.un-active:active,
+.adnvul .adnvul-row .adnvulrw-action .btn.un-active:hover{
+    scale: 1;
+    box-shadow: none;
+}
+
+/* ===================this is table==============================> */
+.tb-section{
+    margin: 2rem auto;
+    /* position: sticky; */
+    top: calc(75px + 0.5rem);
+    width: 100%;
+}
+.web-nav ul li {
+    width: 50%;
+}
+#main-tb .tb-section-body {
+    position: relative;
+    margin: 0 1rem;
+    border-radius: 0.8rem;
+    background: var(--sg-bglight);
+    overflow: hidden;
+    z-index: 99;
+}
+#main-tb .tb-section-body > .box{
+    /* max-height: calc(100vh - 80px); */
+    height: max-content;
+    overflow: auto;
+    scrollbar-width: thin;
+}
+@media only screen and (max-width: 950px) {
+    #main-tb{
+        padding-bottom: 1px;
+    }
+    /* #main-tb .tb-section-body > .box{
+        height: calc(100vh - 350px);
+    } */
+}
+#main-tb table {
+    width: 100%;
+    min-width: max-content;
+    margin: 0 auto;
+    height: auto;
+    text-align: center;
+    border-collapse: collapse;
+    text-align: left;
+}
+#main-tb table thead {
+    position: sticky;
+    top: 0rem;
+    z-index: 100;
+    background: var(--sg-bglight);
+}
+#main-tb table thead th{
+    padding: 1rem 0rem;
+}
+#main-tb table tr.tr-active{
+    -webkit-animation: atop 2s forwards;
+    -moz-animation: atop 2s forwards;
+    -o-animation: atop 2s forwards;
+    animation: atop 2s forwards; opacity: 0;
+}
+#main-tb table tr {
+    border-bottom: 1px solid var(--sg-bgblack);
+}
+#main-tb table tr th:first-child {
+    padding: 1.5rem 0.5rem;
+    text-align: left;
+    text-indent: 10px;
+    border-radius: 3px 3px 0px 0px;
+}
+
+#main-tb table tr th,
+#main-tb table tr td {
+    font-size: 1rem;
+    padding: 1rem 0.5rem;
+    /* font-family: "Bricolage Grotesque", "Battambang", system-ui, sans-serif; */
+}
+#main-tb table tr th {
+    padding: 0.8rem 0.7rem;
+}
+#main-tb table tr td .img {
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    margin-left: 0.5rem;
+    z-index: 3;
+    background: var(--sg-bgblack);
+}
+#main-tb table tr td .img svg{
+    width: 2rem;
+}
+#main-tb table tr td .img path{
+    stroke: var(--sg-button-blueHover);
+}
+#main-tb table tr td:first-child .img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+#main-tb table tr td:first-child .img img.img-none{
+    filter:opacity(0.2);
+    position: relative;
+}
+#main-tb table tr td:first-child .img:has(img.img-none):before{
+    content: 'រូប!';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0rem;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#main-tb table tr td .text {
+    line-height: 1.3;
+    margin-left: 0.5rem;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+#main-tb table tr td .text p {
+    text-align: left;
+    font-size: 1rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+#main-tb table tr td .text h2 {
+    font-size: 1rem;
+    text-align: left;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+#main-tb table tr td .text h2 i {
+    font-size: 0.77rem;
+    margin: 0 0.2rem;
+    padding-top: 0.2rem;
+}
+#main-tb table tr td .icon{
+    width: 1rem;
+    height: 1rem;
+}
+#main-tb table tr .task-title-box{
+    width: 100%;
+    padding: 0rem;
+}
+#main-tb table tr td .task-title-box .text{
+    width: 300px;
+}
+#main-tb table tr .dt-status{
+    gap: 0.3rem;
+    border-radius: 50rem;
+    width: max-content;
+    max-width: 100%;
+    padding: 0rem;
+    position: relative;
+    width: 100%;
+    background: var(--sg-bgblack);
+    overflow: hidden;
+}
+#main-tb table tr .dt-status .add-rate{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0rem;
+    top: 0rem;
+    background: var(--colorText-00);
+}
+#main-tb table tr .dt-status svg{
+    position: relative;
+    z-index: 1;
+    width: 0.5rem;
+    margin-left: 0.3rem;
+    opacity: 0;
+}
+#main-tb table tr .dt-status .icon{
+    height: 1px;
+}
+#main-tb table tr td .btn-task-status{
+    border-radius: 50rem;
+    height: 1.5rem;
+    font-size: 0.9rem;
+    padding: 0rem 0.8rem;
+    width: max-content !important;
+    min-width: max-content !important;
+    min-height: initial !important;
+}
+#main-tb table tr td .btn-task-status.btn-sts-true{
+    
+}
+#main-tb table tr .dt-status p{
+    margin-right: 0.3rem;
+    font-size: 0.2rem !important;
+    color: var(--sg-color-spece);
+    position: relative;
+    opacity: 0;
+}
+#main-tb table tr td .icon path{
+    stroke: var(--sg-color-spece);
+    stroke-width: 2px;
+}
+#main-tb table td .btn {
+    margin-left: 0.5rem;
+    border-radius: 4px;
+    padding: 0rem;
+    width: 84px;
+    height: 35px;
+    min-width: 84px;
+    min-height: 35px;
+    line-height: 0;
+    background: var(--sg-bgblack);
+}
+#main-tb table td .btn-delete {
+    font-weight: 550;
+    font-size: 0.9rem;
+    cursor: pointer;
+    position: relative;
+    color: var(--sg-maincolor-orangdark);
+    overflow: hidden;
+}
+#main-tb table td .btn-delete span {
+    position: relative;
+    z-index: 1;
+}
+#main-tb table td .btn-delete:active,
+#main-tb table td .btn-delete:active span::selection {
+    color: var(--sg-bglight);
+    background: var(--sg-maincolor-orangdark);
+}
+#main-tb table td .btn-delete span::selection {
+    color: var(--sg-color-spece);
+    background: var(--sg-border-input);
+}
+#main-tb table td .btn-status {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+    background: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size: 1.05rem;
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid var(--sg-border-input);
+}
+#main-tb table td .btn-status ul {
+    position: absolute;
+    top: 5.5rem;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    z-index: 11;
+    overflow: hidden;
+    border-radius: 10px;
+    min-width: max-content;
+    min-height: max-content;
+    padding: 5px 10px;
+    color: var(--sg-color-text);
+    background: var(--sg-bglight);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+        rgba(0, 0, 0, 0.3) -4px -5px 16px -8px;
+    z-index: 20;
+}
+#main-tb table td .btn-status ul li {
+    padding: 0rem 0.3rem;
+    color: var(--sg-bglight);
+    margin: 0.3rem auto;
+}
+#main-tb table td .btn-status:focus ul {
+    transform: translate(-50%, -50%) scale(1);
+}
+#main-tb table td .btn-status ul li:first-child {
+    background: var(--sg-mainColor-yellow);
+}
+#main-tb table td .btn-status ul li:last-child {
+    background: var(--sg-maincolor-orangdark);
+}
+#main-tb table tr th:last-child{
+    position: sticky;
+    right: 0;
+    text-align: center;
+    background: var(--sg-bglight);
+}
+#main-tb table tr td:last-child {
+    cursor: pointer;
+    text-align: center;
+    position: sticky;
+    overflow: hidden;
+    right: 0;
+    color: var(--sg-mainColor-yellow);
+    background: var(--sg-bglight);
+    z-index: 2;
+}
+#main-tb table tr td:last-child a,
+#main-tb table tr td:last-child button {
+    color: var(--sg-color-brand);
+    width: 100%;
+    height: 100%;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+}#main-tb table tr td:last-child a svg,
+#main-tb table tr td:last-child button svg{
+    width: 1rem;
+}
+#main-tb table tr td:last-child a path,
+#main-tb table tr td:last-child button path {
+    stroke-width: 2px;
+    stroke: var(--sg-color-brand);
+}
+#main-tb table tr td:last-child:hover {
+    background: var(--sg-bgblack);
+}
+#main-tb table tr td:last-child:active,
+#main-tb table tr td:last-child:active span::selection {
+    color: var(--sg-color-spece);
+}
+#main-tb table tr td:last-child:active span::selection {
+    background: var(--sg-bgblack);
+}
+#main-tb table tr td:last-child span::selection {
+    color: var(--sg-mainColor-yellow);
+    background: var(--sg-bgblack);
+}
+#main-tb table tr td:last-child i {
+    font-size: 1rem;
+    margin: 0 0.3rem;
+}
+#main-tb table tr td:last-child span::before,
+.tb-foot > .box > ul li::before,
+.tb-foot > .box > button::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all ease-in-out 0.2s;
+    opacity: 0.1;
+    border-radius: 50rem;
+}
+#main-tb table tr td:last-child:active span::before,
+.tb-foot > .box > ul li:active::before,
+.tb-foot > .box > button:active::before {
+    transform: translate(-50%, -50%) scale(1.5);
+}
+/* this is table footer======================================> */
+.tb-foot {
+    position: sticky;
+    z-index: 10;
+    padding: 1rem 0rem;
+    bottom: 0;
+    background: var(--sg-bglight);
+    border-bottom: 1px solid var(--sg-bgblack);
+}
+.tb-foot > .box > button {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background: none;
+    position: relative;
+}
+.tb-foot > .box > button:hover {
+    color: var(--sg-button-blueHover);
+}
+.tb-foot > .box > ul li {
+    min-width: max-content;
+    padding: 0rem;
+    line-height: 0;
+    height: 2.1rem;
+    width: 2.1rem;
+    margin: 0rem 0.2rem;
+    font-size: 0.9rem;
+    font-weight: 550;
+    cursor: pointer;
+    position: relative;
+    background: var(--sg-bgblack);
+    overflow: hidden;
+}
+.tb-foot > .box > ul li > span::selection {
+    background: var(--sg-bgblack);
+}
+.tb-foot > .box > ul > .active {
+    color: var(--sg-button-blueHover);
+}
+
+@-webkit-keyframes atop{
+    0%   {opacity: 1;}
+    100% {                 
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        background: var(--sg-bglight);
+        z-index: 100;
+        -webkit-animation: atop 2s forwards;
+        -moz-animation: atop 2s forwards;
+        -o-animation: atop 2s forwards;
+        animation: atop 2s forwards; 
+        bottom: -100%;
+    }
+}
+
+@-moz-keyframes atop{
+    0%   {opacity: 1;}
+    100% {                 
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        background: var(--sg-bglight);
+        z-index: 100;
+        bottom: -100%;
+    }
+}
+
+@-o-keyframes atop{
+    0%   {opacity: 1;}
+    100% {                 
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        background: var(--sg-bglight);
+        z-index: 100;
+        bottom: -100%;
+    }
+}
+
+@keyframes atop{
+    0%   {opacity: 1;}
+    100% {                 
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        background: var(--sg-bglight);
+        z-index: 100;
+        bottom: -100%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .tb-section-body {
+        overflow: scroll;
+        max-width: 100%;
+        max-height: 100vh;
+    }
+    #main-tb table {
+        min-width: max-content;
+    }
+    #main-tb table tr:first-child {
+        top: 0;
+    }
+}
+@media only screen and (max-width: 650px){
+    .tb-section-body {
+        overflow: initial;
+        max-width: 100%;
+        max-height: max-content;
+    }
+    .tb-foot{
+        margin-top: 1rem;
+        background: transparent;
+        position: initial;
+    }
+    .tb-foot > .box > ul li{
+        background: var(--sg-bglight);
+    }
+    .adnav-head .btn{
+        border-radius: 50rem;
+        height: 2.5rem;
+        padding: 0rem 0.8rem;
+    }
+}
+@media only screen and (max-width: 550px) {
+    .web-nav ul li {
+        width: calc(100% - 1rem);
+        min-width: calc(100% - 1rem);
+    }
+    .web-nav ul li:first-child{
+        margin-right: 0rem !important;
+    }
+}

@@ -1,0 +1,229 @@
+/* ===================this is form for insert data=====================> */
+.wbfm,
+.wbfm-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    transition: all ease-in-out 0.3s;
+}
+.wbfm.active{
+    display: flex;
+}
+.wbfm-overlay{
+    display: block;
+    z-index: 999;
+    opacity: 0.05;
+    background: var(--sg-color-def);
+}
+.wbfm .wbfm-bx{
+    width: calc(100% - 1.6rem);
+    max-width: 650px;
+    overflow: hidden;
+    border-radius: 1rem;
+    z-index: 999999;
+    background: var(--sg-bglight);
+    position: relative;
+    opacity: 0;
+    transition: all ease-in-out 0.5s;
+}
+.wbfm.active .wbfm-bx{
+    opacity: 1;
+    transition: all ease-in-out 0.5s;
+}
+.wbfm .wbfmh{
+    border-bottom: 1px solid var(--sg-border-00);
+}
+.wbfm .wbfmh-bx{
+    margin: 0rem 0.8rem;
+    height: 3.5rem;
+}
+.wbfm .wbfmh-bx h3{
+    font-size: 1.2rem;
+    color: var(--sg-color-la);
+}
+.wbfm .wbfmh-bx .pf{
+    width: 2.8rem;
+    height: 2.8rem;
+}
+.wbfm .wbfmh-bx .btn-close{
+    width: 2.8rem;
+    height: 2.8rem;
+    cursor: pointer;
+}
+.wbfm .wbfmh-bx .btn-close svg{
+    width: 2rem;
+    rotate: 134deg;
+}
+.wbfm .wbfmpr-bx{
+    padding: 1rem 0.8rem;
+}
+.wbfm .wbfmpr-bx .pr-bx{
+    gap: 0.8rem;
+}
+.wbfm .wbfmpr-bx .pr{
+    border-radius: 50rem;
+    box-sizing: border-box;
+    height: 2.3rem;
+    margin-left: .4rem;
+    outline: 2px solid var(--sg-border-00);
+    outline-offset: 3px;
+    overflow: hidden;
+    width: 2.3rem;
+}
+.wbfm .wbfmpr-bx .pr img{
+
+}
+.wbfm .wbfmpr-bx .txt p{
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+/* ===========this is content============== */
+.wbfm .wbfmcn{
+    height: max-content;
+    max-height: calc(100vh - 350px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-left: 1rem;
+    padding-right: 0.6rem;
+}
+.wbfm .wbfmcn .wbfmcn-bx{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem 0rem;
+}
+.wbfm .wbfmta{
+    position: absolute;
+    right: 0.8rem;
+    top: 75px;
+}
+.wbfm .wbfmta .btn{
+    cursor: pointer;
+    background: var(--sg-bgblack);
+}
+.wbfm .wbfmta .btn:hover{
+    background: var(--sg-bgblack);
+}
+/* ---this is input type text, email, password,---- */
+.wbfm .wbfmcn .txtin-bx{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.wbfm .wbfmcn .txtin-bx label{
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--sg-color-la);
+}
+.wbfm .wbfmcn .txtin-bx .txtin-bx{
+    border: 1px solid var(--sg-border-00);
+    overflow: hidden;
+    border-radius: 0.8rem;
+    height: 60px;
+    padding: 0rem 0.5rem;
+    background: var(--sg-bg-in);
+}
+.wbfm .wbfmcn .txtin-bx .txt-title{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--sg-color-la);
+}
+/* ---this is input caption---- */
+.wbfm .wbfmcn .txt-caption {
+    max-width: 100%;
+}
+.wbfm .wbfmcn .txt-caption .txt-caption-box {
+    border-radius: 0.8rem;
+    box-sizing: border-box;
+    border: 1px solid var(--sg-border-00);
+    display: grid;
+    background: var(--sg-bg-in);
+}
+.wbfm .wbfmcn .txt-caption textarea,
+.wbfm .wbfmcn .txt-caption .txt-caption-box::after {
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 0.8rem;
+}
+.wbfm .wbfmcn .txt-caption textarea {
+    width: 100%;
+    max-width: 100%;
+    outline: none;
+    font-size: 1rem;
+    background: none;
+    resize: none;
+    overflow: hidden;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--sg-color-text);
+    font-family: var(--sg-font-noto);
+}
+.wbfm .wbfmcn .txt-caption .txt-caption-box::after {
+    content: attr(data-replicated-value) " ";
+    white-space: pre-wrap;
+    visibility: hidden;
+}
+.wbfm .wbfmcn .txt-caption .tcpn{
+    font-size: 0.8rem;
+    color: var(--sg-color-spece);
+    text-indent: 0.5rem;
+    line-height: 1.5;
+}
+/* --this is section */
+.wbfm .wbfmcn .txtin-bx .txtin-bx select{
+    height: 100%;
+    font-size: 1rem;
+}
+/* ========this is footer ========== */
+.wbfmft{
+    padding: 1rem 0rem;
+}
+.wbfmft .wbfmft-box{
+    flex-direction: column;
+    gap: 0.8rem;
+    justify-content: initial;
+    align-items: initial;
+    padding: 0rem 0.8rem;
+}
+.wbfmft .wbfmft-box .wbfmft-action{
+    height: 60px;
+    border-radius: 1rem;
+    padding: 0rem 0.8rem;
+    border: 1px solid var(--sg-border-00);
+}
+.wbfmft .wbfmft-box h2{
+    font-size: 1rem;
+    color: var(--sg-color-la);
+}
+.wbfmft .wbfmft-box .wbfmft-action .btn-list-action{
+    gap: 0.5rem;
+}
+.wbfmft .wbfmft-box .wbfmft-action .btn-list-action .btn{
+    border-radius: 0.8rem;
+    cursor: pointer;
+    padding: 0rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid var(--sg-border-00);
+    background: var(--sg-bglight);
+}
+.wbfmft .btn-sub .btn{
+    width: 100%;
+    padding: 0rem;
+    height: 3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--sg-bglight);
+    border-radius: 50rem;
+}

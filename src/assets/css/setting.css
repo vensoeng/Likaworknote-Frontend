@@ -1,0 +1,119 @@
+.wpsn {
+    overflow: hidden;
+}
+.wpsn .user{
+    margin: 0.8rem;
+    border-radius: 1rem;
+    background: var(--sg-bglight);
+}
+.wpsn .user-h{
+    border-bottom: 1px solid var(--colorBorder-00);
+}
+.wpsn .user-h .uh-bx{
+    padding: 1rem 0.8rem;
+}
+.wpsn .user-h .uh-bx h2{
+    font-size: 1.25rem;
+    color: var(--sg-color-la);
+}
+.wpsn .user .upr{
+    padding: 1rem 0.8rem;
+    /* border-bottom: 1px solid var(--colorBorder-00); */
+}
+.wpsn .user .upr-bx{
+    gap: 0.8rem;
+}   
+.wpsn .user .pr{
+    width: 4rem;
+    height: 4rem;
+}
+.wpsn .user .upr .txt p{
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+.wpsn .user .upr .btn{
+    font-size: 0.9rem;
+    font-weight: 600;
+    gap: 0.1rem;
+    cursor: pointer;
+    padding: 0rem 0.8rem;
+    border-radius: 50rem;
+    background: var(--sg-bgblack);
+}
+.wpsn .user .upr .btn svg{
+    width: 1.25rem;
+}
+.wpsn .wbfm{
+    position: initial;
+    height: initial;
+}
+.wpsn .wbfm .wbfm-bx{
+    max-width: initial;
+    width: 100%;
+    overflow: initial;
+}
+.wpsn .wbfm .wbfm-bx .btn-sub path{
+    stroke: var(--sg-bglight);
+}
+.wpsn .wbfm .wbfm-bx .btn-sub .btn{
+    border-radius: 0.8rem;
+}
+.wpsn .wbfmft .wbfmft-box{
+    padding: 0rem;
+}
+.wpsn .user .ulogout{
+    padding-bottom: 0.5rem;
+}
+.wpsn .user .ulogout .btn{
+    width: 100%;
+    cursor: pointer;
+    background: var(--sg-bglight);
+    height: 2.8rem;
+}
+.wpsn .user .ulogout .btn p{
+    font-size: 1rem;
+    color: var(--sg-color-brand);
+}
+.wpsn .user .ulogout .btn path{
+    stroke: var(--sg-color-brand);
+}
+
+.wpsn  #main-tb table tr td.data-telegram-id{
+    min-width: max-content;
+}
+.wpsn  #main-tb table tr td.data-telegram-id .btn{
+    min-width: max-content;
+    width: max-content;
+    padding: 0rem 0.8rem;
+    font-size: 0.95rem;
+    height: 2rem;
+    border-radius: 50rem;
+}
+@media only screen and (max-width: 650px) {
+    .admin-settingwp .adnvul{
+        flex-direction: column;
+        margin: 0rem 0.8rem;
+    }
+    .admin-settingwp .adnvul .adnvul-row{
+        min-width: initial;
+        width: 100%;
+        padding: 0rem;
+        max-width: initial;
+    }
+    .admin-settingwp .adnvul .adnvul-row:first-child{
+        margin: 0 auto;
+    }
+    .admin-settingwp .adnvul .adnvul-row:last-child{
+        margin-left: 0rem;
+        display: none;
+    }
+    .admin-settingwp .adnvul{
+        margin: 0rem 0.5rem;
+    }
+}
+
+@media only screen and (max-width: 450px){
+    .wpsn .user{
+        margin: 0.5rem;
+    }
+}

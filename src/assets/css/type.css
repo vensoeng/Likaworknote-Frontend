@@ -1,0 +1,24 @@
+@media only screen and (max-width: 650px) {
+    .admin-typewp .adnvul{
+        flex-direction: column;
+        margin: 0rem 0.8rem;
+    }
+    .admin-typewp .adnvul .adnvul-row{
+        min-width: initial;
+        width: 100%;
+        padding: 0rem;
+        max-width: initial;
+    }
+    .admin-typewp .adnvul .adnvul-row:first-child{
+        margin: 0 auto;
+    }
+    .admin-typewp .adnvul .adnvul-row:last-child{
+        margin-left: 0rem;
+        display: none;
+    }
+}
+@media only screen and (max-width: 450px){
+    .admin-typewp .adnvul{
+        margin: 0rem 0.5rem;
+    }
+}
