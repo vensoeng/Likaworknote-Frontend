@@ -210,9 +210,9 @@ h1,h2,h3{
     position: relative;
     --text-: "ឈ្មោះម៊ីនុយ";
 }
-@media only screen and(max-width: 800px) {
+@media only screen and (max-width: 800px) {
     .img-bg::before,
-    .img-bg:hover::before{
+    .img-bg:hover::before {
         display: none !important;
     }
 }
