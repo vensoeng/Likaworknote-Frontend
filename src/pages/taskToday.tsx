@@ -104,7 +104,8 @@ function TaskTodayPage() {
     // Arror back action
     //=============================
     const navigate = useNavigate();
-    const [linkBack, setLinkBack] = useState<any>('/');
+    // const [linkBack, setLinkBack] = useState<any>('/');
+    const [linkBack] = useState<any>('/');
     const handleBack = () => {
         if (window.history.length > 2) {
             navigate(-1);
