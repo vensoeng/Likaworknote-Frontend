@@ -72,7 +72,7 @@ function TaskWebpage() {
       setTask(
         Array.isArray(data) ? data : []
       );
-      console.log(data);
+      // console.log(data);
 
     } catch (error) {
       console.error(
@@ -187,7 +187,6 @@ function TaskWebpage() {
                 // ReminderService.getReminder(),
                 TelegramService.getTelegram(),
             ]);
-            console.log("Category:", catRes);
                 // Extract Data
                 const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
                 const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];

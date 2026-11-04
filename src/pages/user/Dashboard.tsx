@@ -122,7 +122,7 @@ function Dashboard() {
       // Dashboard tasks
       const filteredTasks = filterTodayTasks(taskList);
       setTasksToday(filteredTasks);
-      console.log(filteredTasks);
+      // console.log(filteredTasks);
       // console.log( "All Tasks:",taskList);
       // console.log("Dashboard Tasks:", filteredTasks );
       setCompletedCounts(getCompletedTaskCounts(taskList))
