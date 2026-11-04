@@ -5,47 +5,16 @@ import type { UserProfile } from "../../types/updateMe";
 
 import UserModel from "../../components/form/user";
 
-import TelegramService from "../../services/telgramService";
-import type { Telegram } from "../../types/Telegram";
-import TelegramModel from "../../components/form/TelegramModel";
-
 import { formatDate } from "../../config/formatData";
 import WebLoader from "../../components/WebLoader";
 import UIList from "../../components/task_list_UI_650px";
 
-import { UserEdit, More, Edit, Magicpen, Flash, Send2, Add, LoginCurve } from "iconsax-reactjs";
+import { UserEdit, More, Edit, Magicpen, Send2, Add, LoginCurve } from "iconsax-reactjs";
 import '../../assets/css/setting.css';
 import '../../assets/css/from.css';
 
 function Setting() {
-  const { user, getProfileImage, updateUser, logout } = useAuth();
-
-  const [loading, setLoading] = useState<boolean>(true);
-  const [telegrams, setTelegram] = useState<Telegram[]>([]);
-  //fetch for get category task
-  const fetchTelegram = async () => {
-     try {
-      setLoading(true);
-
-      const data =
-        await TelegramService.getTelegram();
-
-      setTelegram(
-        Array.isArray(data) ? data : []
-      );
-
-    } catch (error) {
-      console.error(
-        "Failed to fetch Telegram:",
-        error
-      );
-
-      setTelegram([]);
-
-    } finally {
-      setLoading(false);
-    }
-  };
+  const {loading, user, getProfileImage, updateUser, logout } = useAuth();
   //this is for fetch user 
   const [updateMeData, setUpdateMeData] = useState<UserProfile | null>(null);
   const fetchUser = () => {
@@ -54,15 +23,11 @@ function Setting() {
       firstName: user?.firstName ?? "",
       lastName: user?.lastName ?? "",
       email: user?.email ?? "",
+      telegram_id: user?.telegram_id ?? null,
     };
 
     setUpdateMeData(userData);
   };
-
-
-  useEffect(() => {
-    fetchTelegram();
-  }, []);
 
   useEffect(() => {
     if (user) {
@@ -70,85 +35,8 @@ function Setting() {
     }
   }, [user]);
 
-  const [isFormOpen, setIsFormOpen] = useState(false);
   const [isFormUserModel, setIsFormUserModel] = useState(false);
 
-  const [formMode, setFormMode] =
-    useState<"create" | "edit">("create");
-  
-  const [selectedTelegram, setSelectedTelegram] = useState<Telegram| null>(null);
-
-  const handleOpenCreate = () => {
-    setFormMode("create");
-    setSelectedTelegram(null);
-    setIsFormOpen(true);
-  };
-  
-  const handleOpenEdit = (
-    Telegram: Telegram
-  ) => {
-    setFormMode("edit");
-    setSelectedTelegram(Telegram);
-    setIsFormOpen(true);
-  };
-  
-  
-  const handleCloseForm = () => {
-    setIsFormOpen(false);
-    setSelectedTelegram(null);
-  };
-
-  const handleCategorySuccess = (
-      telegram: Telegram
-    ) => {
-      if (formMode === "create") {
-        setTelegram((prev) => [
-          telegram,
-          ...prev,
-        ]);
-  
-      } else {
-        setTelegram((prev) =>
-          prev.map((item) =>
-            item.id === telegram.id
-              ? telegram
-              : item
-          )
-        );
-      }
-  };
-
-   //delete action 
-  const [textMsdelete,setTextMsdelete] = useState<string>('');
-  const [isDelete, setIsDelete] = useState<boolean>(false);
-  const handleDeleteTelegram = async (id: number) => {
-    const confirmed = window.confirm(
-      "🔴 តើអ្នកពិតជាចង់លុប គណនី នេះមែនទេ? ភារកិច្ចណាដែលអ្នកបានជ្រើសរើសភ្ជាប់ជាមួយគណនីនេះ នឹងមិនអាចដំណើរការបានទេ!"
-    );
-
-    if (!confirmed) {
-      return;
-    }
-    
-    try {
-      setIsDelete(true)
-      setTextMsdelete('សូមរងចាំយើងកំពុងព្យាយាមលុបទិន្នន័យដែលអ្នកបានស្មើរ!')
-      await TelegramService.deleteTelegram(id);
-
-      setTelegram((prev) =>
-        prev.filter((telegram) => telegram.id !== id)
-      );
-
-      setTextMsdelete('សំណើរលុបទិន្នន័យរបស់អ្នកបានជោគជ័យ!')
-    } catch (error) {
-      console.error("Failed to delete category:", error);
-      alert("ការលុបមិនបានជោគជ័យទេ!");
-    }finally{
-      setIsDelete(false);
-      console.log("Delete action completed.");
-    }
-  };
-  // user update me form 
   const handleUpdateMeSuccess = (updatedUser: UserProfile) => {
     setUpdateMeData((prev) => ({
       ...prev,
@@ -187,14 +75,6 @@ function Setting() {
   return (
     <div className="admin-content admin-settingwp">
       {/* =========================
-          MS for DELETE
-      ========================= */}
-      {isDelete && (
-          <WebLoader>
-           {textMsdelete}
-          </WebLoader>
-      )}
-      {/* =========================
           USER MODEL
       ========================= */}
       {isFormUserModel && (
@@ -204,17 +84,7 @@ function Setting() {
           updateMe={updateMeData}
         />
       )}
-      {/* =========================
-          FOR OPEN FORM
-      ========================= */}
-      {isFormOpen && (
-        <TelegramModel
-          onClose={handleCloseForm}
-          onSuccess={handleCategorySuccess}
-          mode={formMode}
-          telegram={selectedTelegram}
-        />
-      )}
+     
       {/* this is setting wabpage */}
       <div className="wpsn">
         <div className="wpsn-bx">
@@ -262,26 +132,6 @@ function Setting() {
           THIS IS NAV
           ========================= */}
           <div className="adnav">
-            <div className="adnav-head">
-              <div className="adnvh-box df-s">
-                <h2 className="df-l">
-                  <Flash
-                    className="icon icon-sm over-h"
-                  />
-                  បញ្ជីនៃទិន្នន័យ
-                </h2>
-                {/* CREATE */}
-                <button
-                  type="button"
-                  className="btn"
-                  onClick={handleOpenCreate}
-                >
-                  <Magicpen />
-                  បង្កើតគណនី
-                </button>
-              </div>
-            </div>
-
             {/* =========================
                 STAT / ACTION BOX
             ========================= */}
@@ -298,10 +148,10 @@ function Setting() {
                     <div className="adnvulrw-con">
                       <blockquote>
                         <h2>
-                          មានចំនួន {telegrams.length}
+                          ការណែនាំ
                         </h2>
                         <p>
-                          សូមធ្វើការបង្កើត គណនី Telegram ដើម្បីអាចឱ្យ Bot របស់យើងអាចផ្ញើរសារទៅកាន់អ្នកបាន។
+                          សូមធ្វើការចូលទៅកាន់Bot ហើយវាយសារ /start ដើម្បីឱ្យBotរបស់យើងអាចទាក់ទងទៅកាន់អ្នកបាន។
                         </p>
                       </blockquote>
                     </div>
@@ -369,56 +219,24 @@ function Setting() {
                 {screenWidth <= 650 ? (
                 /* MOBILE LAYOUT */
                 <div className="ui65 db-c" style={{marginTop: '1rem'}}>
-                    {telegrams.length === 0 ? (
-                        <div
-                            style={{
-                                textAlign: "center",
-                                padding: "30px",
-                                color: "#64748b",
-                            }}
-                        >
-                          មិនមានទិន្នន័យគណនី Telegramឡើយ។
-                        </div>
-                    ) : (
-                        telegrams.map((d, index) => (
-                            <UIList
-                              key={d.id || index}
-                              title={String(d.title)}
-                              description={String(d.telegram_id)}
-                              icon=""
-                              tableData={
-                                  <>
-                                      <tr>
-                                          <td>ឈ្មោះគណនី</td>
-                                          <td>{d.title}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>ការពិពណ៌នា</td>
-                                          <td>{d.des}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>IDគណនី</td>
-                                          <td>{d.telegram_id}</td>
-                                      </tr>
-                                      <tr>
-                                          <td>ពេលបង្កើត</td>
-                                          <td>
-                                              {formatDate(String(d.created_at))}
-                                          </td>
-                                      </tr>
-                                      <tr>
-                                          <td>ពេលកែប្រែ</td>
-                                          <td>
-                                              {formatDate(String(d.updated_at))}
-                                          </td>
-                                      </tr>
-                                  </>
-                              }
-                              onDelete={() => handleDeleteTelegram(d.id)}
-                              onEdit={() => handleOpenEdit(d)}
-                            />
-                        ))
-                    )}
+                    <UIList
+                      title={user?.username}
+                      description={user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}
+                      icon=""
+                      tableData={
+                          <>
+                          <tr>
+                              <td>ឈ្មោះគណនី</td>
+                              <td>@{user?.username}</td>
+                          </tr>
+                          <tr>
+                            <td>IDគណនី</td>
+                            <td>{user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}</td>
+                          </tr>
+                          </>
+                      }
+                      onEdit={() => handleOpenUpdateMeForm()}
+                    />
                 </div>
               ) : (
               <div className="box">
@@ -427,123 +245,72 @@ function Setting() {
                     <tr>
                       <th>ឈ្មោះគណនី</th>
                       <th>លេខសម្គាល់</th>
-                      <th style={{ textAlign: "center", }}>លុបទិន្នន័យ</th>
                       <th style={{ textAlign: "center", }}>ម៉ឺនុយ</th>
                       <th>ពេលវេលា</th>
                       <th>សកម្មភាព</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {telegrams.length === 0 ? (
-                      <tr>
-                        <td
-                          colSpan={6}
-                          style={{
-                            textAlign: "center",
-                            padding: "30px",
-                            color: "#64748b",
-                          }}
+                    <tr>
+                      {/* TITLE */}
+                      <td>
+                        <div className="box df-l">
+                          <div className="text">
+                            <h2>
+                              {user?.firstName + '' + user?.lastName}
+                            </h2>
+                            <blockquote>
+                              <p>
+                                @{user?.username}
+                              </p>
+                            </blockquote>
+                          </div>
+                        </div>
+                      </td>
+                      {/* telegram Id  */}
+                      <td className="data-telegram-id">
+                        <div className="btn">
+                          <p>{user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}</p>
+                        </div>
+                      </td>
+                      {/* MENU */}
+                      <td
+                        style={{
+                          textAlign: "center",
+                        }}
+                      >
+                        <button
+                          type="button"
+                          className="btn btn-ra icon-ra-sm btn-status"
+                          onClick={() =>
+                            handleOpenUpdateMeForm()
+                          }
                         >
-                          មិនមានទិន្នន័យគណនី Telegramឡើយ។
-                        </td>
-                      </tr>
-
-                    ) : (
-
-                      telegrams.map((d, index) => (
-                        <tr
-                          key={d.id || index}
+                          <span>
+                            <More />
+                          </span>
+                        </button>
+                      </td>
+                      {/* DATE */}
+                      <td>
+                        {formatDate(String(user?.created_at))}
+                      </td>
+                      {/* EDIT */}
+                      <td>
+                        <button
+                          type="button"
+                          className="df-c btn-edit-action"
+                          onClick={() =>
+                            handleOpenUpdateMeForm()
+                          }
                         >
-                          {/* TITLE */}
-                          <td>
-                            <div className="box df-l">
-                              <div className="text">
-                                <h2>
-                                  {d.title}
-                                </h2>
-                                <blockquote>
-                                  <p>
-                                    {d.des}
-                                  </p>
-                                </blockquote>
-                              </div>
-                            </div>
-                          </td>
-                          {/* telegram Id  */}
-                          <td className="data-telegram-id">
-                            <div className="btn">
-                              <p>{d.telegram_id}</p>
-                            </div>
-                          </td>
-                          {/* DELETE */}
-                          <td
-                            style={{
-                              textAlign: "center",
-                            }}
-                          >
-                            <button
-                              type="button"
-                              className="bg-n"
-                              onClick={() => handleDeleteTelegram(d.id)}
-                            >
-                              <div className="btn btn-ra btn-delete"
-                              >
-                                <span>
-                                  លុបទិន្នន័យ
-                                </span>
-                              </div>
-                            </button>
-                          </td>
-                          {/* MENU */}
-                          <td
-                            style={{
-                              textAlign: "center",
-                            }}
-                          >
-                            <button
-                              type="button"
-                              className="btn btn-ra icon-ra-sm btn-status"
-                              onClick={() =>
-                                handleOpenEdit(d)
-                              }
-                            >
-                              <span>
-                                <More />
-                              </span>
-
-                            </button>
-                          </td>
-                          {/* DATE */}
-                          <td>
-                            {new Date(
-                              d.created_at
-                            ).toLocaleDateString(
-                              "kh-KH",
-                              {
-                                year: "numeric",
-                                month: "short",
-                                day: "numeric",
-                              }
-                            )}
-                          </td>
-                          {/* EDIT */}
-                          <td>
-                            <button
-                              type="button"
-                              className="df-c btn-edit-action"
-                              onClick={() =>
-                                handleOpenEdit(d)
-                              }
-                            >
-                              <span>
-                                កែប្រែ
-                              </span>
-                              <Edit size="16" />
-                            </button>
-                          </td>
-                        </tr>
-                      ))
-                    )}
+                          <span>
+                            កែប្រែ
+                          </span>
+                          <Edit size="16" />
+                        </button>
+                      </td>
+                    </tr>
                   </tbody>
                 </table>
               </div>

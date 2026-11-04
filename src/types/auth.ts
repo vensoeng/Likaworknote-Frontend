@@ -8,7 +8,9 @@ export interface User {
   birthday: string;
   email: string;
   role: number;
-  telgram_id: string | null;
+  telegram_id: string | null;
+  created_at: string | null;
+  updated_at: string | null;
 }
 
 export interface RegisterRequest {

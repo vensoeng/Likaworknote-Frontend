@@ -3,6 +3,7 @@ export interface UpdateMe {
   firstName: string;
   lastName: string;
   password?: string;
+  telegram_id: string | null;
 }
 
 export interface UserProfile {
@@ -10,6 +11,7 @@ export interface UserProfile {
   firstName: string;
   lastName: string;
   email: string;
+  telegram_id: string | null;
 }
 
 export interface ApiResponse<T> {

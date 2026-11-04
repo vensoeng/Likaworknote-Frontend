@@ -40,6 +40,10 @@ export default function UserModel({
 
   const [password, setPassword] = useState('');
 
+  const [telegram_id, setTelegramId] = useState(
+    updateMe?.telegram_id ?? ''
+  );
+
   const email = updateMe?.email ?? "";
 
   const [submitting, setSubmitting] =
@@ -65,6 +69,7 @@ export default function UserModel({
         firstName,
         lastName,
         ...(password.trim() !== "" && { password }),
+        telegram_id: telegram_id.trim() || null,
       };
 
       const savedUpdateMe =
@@ -202,6 +207,27 @@ export default function UserModel({
               </div>
             </div>
           </div>
+          
+          {/* TITLE */}
+          <div className="txt-in">
+            <div className="txtin-bx">
+              <label htmlFor="txt-telegram">
+                គណនី Telegram
+              </label>
+              <div className="txtin-bx">
+                <input
+                  type="text"
+                  className="txt-title"
+                  id="txt-telegram"
+                  placeholder="បញ្ចូលគណនី Telegram ID"
+                  value={telegram_id}
+                  onChange={(e) =>
+                    setTelegramId(e.target.value)
+                  }
+                />
+              </div>
+            </div>
+          </div>
 
           {/* TITLE */}
           <div className="txt-in">
@@ -243,7 +269,7 @@ export default function UserModel({
               </div>
             </div>
           </div>
-
+          
           {/* END */}
         </div>
 

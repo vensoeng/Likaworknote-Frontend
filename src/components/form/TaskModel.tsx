@@ -5,9 +5,9 @@ import WebLoader from "../WebLoader";
 
 import type { Task } from "../../types/Task";
 import type { Category } from "../../types/category";
-import type { Telegram } from "../../types/Telegram";
+// import type { Telegram } from "../../types/Telegram";
 import type { Status } from "../../types/Status";
-import type { Reminder } from "../../types/Reminder";
+// import type { Reminder } from "../../types/Reminder";
 import type { TypeTask } from "../../types/TypeTask";
 
 
@@ -21,8 +21,8 @@ interface FormModalProps {
     types: TypeTask[];
     categories: Category[];
     statuses: Status[];
-    reminders: Reminder[];
-    telegrams: Telegram[];
+    // reminders: Reminder[];
+    // telegrams: Telegram[];
 }
 
 
@@ -34,8 +34,8 @@ export default function TaskModel({
     types,
     categories,
     statuses,
-    reminders,
-    telegrams,
+    // reminders,
+    // telegrams,
 }: FormModalProps) {
 
     // =========================
@@ -48,8 +48,8 @@ export default function TaskModel({
     const [typee, setTypee] = useState<number | "">("");
     const [category, setCategory] = useState<number | "">("");
     const [statuse, setStatuse] = useState<number | "">("");
-    const [reminder, setReminder] = useState<number | "">("");
-    const [telegram, setTelegram] = useState<number | "">("");
+    // const [reminder, setReminder] = useState<number | "">("");
+    // const [telegram, setTelegram] = useState<number | "">("");
     const [schedule, setSchedule] = useState("");
     const [rate, setRate] = useState<number | "">(0);
     // const [getMode, setMode] = useState<string>('');
@@ -88,8 +88,8 @@ export default function TaskModel({
             setTypee(Number(TaskItem.type_id) ?? "");
             setCategory(Number(TaskItem.category_id) ?? "");
             setStatuse(Number(TaskItem.statuses_id) ?? "");
-            setReminder(Number(TaskItem.reminder_id) ?? "");
-            setTelegram(Number(TaskItem.telegram_id) ?? "");
+            // setReminder(Number(TaskItem.reminder_id) ?? "");
+            // setTelegram(Number(TaskItem.telegram_id) ?? "");
             setRate(Number(TaskItem.rate) ?? 0);
 
            setSchedule(toDateInputValue(TaskItem.schedule));
@@ -102,8 +102,8 @@ export default function TaskModel({
             setTypee(types[0]?.id ?? "");
             setCategory(categories[0]?.id ?? "");
             setStatuse(statuses[0]?.id ?? "");
-            setReminder(reminders[0]?.id ?? "");
-            setTelegram(telegrams[0]?.id ?? "");
+            // setReminder(reminders[0]?.id ?? "");
+            // setTelegram(telegrams[0]?.id ?? "");
 
             setRate(0);
             setSchedule("");
@@ -114,8 +114,8 @@ export default function TaskModel({
         types,
         categories,
         statuses,
-        reminders,
-        telegrams,
+        // reminders,
+        // telegrams,
     ]);
     // =========================
     // SUBMIT
@@ -145,8 +145,8 @@ export default function TaskModel({
                 type_id: typee,
                 category_id: category,
                 statuses_id: statuse,
-                reminder_id: reminder,
-                telegram_id: telegram,
+                // reminder_id: reminder,
+                // telegram_id: telegram,
                 rate,
             });
 
@@ -157,8 +157,8 @@ export default function TaskModel({
                 type_id: typee,
                 category_id: category,
                 statuses_id: statuse,
-                reminder_id: reminder,
-                telegram_id: telegram,
+                // reminder_id: reminder,
+                // telegram_id: telegram,
                 schedule,
                 rate,
             });
@@ -187,8 +187,8 @@ export default function TaskModel({
                     type_id: typee,
                     category_id: category,
                     statuses_id: statuse,
-                    reminder_id: reminder,
-                    telegram_id: telegram,
+                    // reminder_id: reminder,
+                    // telegram_id: telegram,
                     rate,
                     schedule,
                 }
@@ -433,7 +433,7 @@ export default function TaskModel({
                     </div>
                 </div>
                 {/* TELEGRAM  */}
-                <div className="txt-in">
+                {/* <div className="txt-in">
                     <div className="txtin-bx">
                         <label htmlFor="sl-telegram">
                             ជ្រើរើសគណនីតេលេក្រាម
@@ -464,9 +464,9 @@ export default function TaskModel({
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* REMANDER  */}
-                <div className="txt-in">
+                {/* <div className="txt-in">
                     <div className="txtin-bx">
                         <label htmlFor="sl-reminder">
                             ជ្រើរើសការរំលឹក
@@ -489,7 +489,7 @@ export default function TaskModel({
                             </select>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* REMANDER  */}
                 <div className="txt-in">
                     <div className="txtin-bx">

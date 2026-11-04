@@ -30,13 +30,13 @@ import "../../assets/css/task.css";
 import TypeTaskService from "../../services/typeTaskService";
 import CategoryService from "../../services/categoryService";
 import StatusService from "../../services/status";
-import ReminderService from "../../services/reminder";
+// import ReminderService from "../../services/reminder";
 import TelegramService from "../../services/telgramService";
 import type { TypeTask } from "../../types/TypeTask";
 import type { Category } from "../../types/category";
 import type { Status } from "../../types/Status";
-import type { Reminder } from "../../types/Reminder";
-import type { Telegram } from "../../types/Telegram";
+// import type { Reminder } from "../../types/Reminder";
+// import type { Telegram } from "../../types/Telegram";
 
 function TaskWebpage() {
   const COMPLETED_STATUS_ID = 1790072865066;
@@ -168,8 +168,8 @@ function TaskWebpage() {
     const [typs, setTypes] = useState<TypeTask[]>([]);
     const [categorys, setCategorys] = useState<Category[]>([]);
     const [statuses, setStatuses] = useState<Status[]>([]);
-    const [reminders, setReminders] = useState<Reminder[]>([]);
-    const [telegrams, setTelegrams] = useState<Telegram[]>([]);
+    // const [reminders, setReminders] = useState<Reminder[]>([]);
+    // const [telegrams, setTelegrams] = useState<Telegram[]>([]);
 
   useEffect(() => {
     const loadAllData = async () => {
@@ -178,13 +178,13 @@ function TaskWebpage() {
                 typeRes,
                 catRes,
                 statRes,
-                remRes,
-                tgRes
+                // remRes,
+                // tgRes
             ] = await Promise.all([
                 TypeTaskService.getTypeTask(),
                 CategoryService.getCategories(),
                 StatusService.getStatus(),
-                ReminderService.getReminder(),
+                // ReminderService.getReminder(),
                 TelegramService.getTelegram(),
             ]);
             console.log("Category:", catRes);
@@ -192,15 +192,15 @@ function TaskWebpage() {
                 const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
                 const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];
                 const statData = Array.isArray(statRes) ? statRes : (statRes as any)?.data?.data || (statRes as any)?.data || [];
-                const remData = Array.isArray(remRes) ? remRes : (remRes as any)?.data?.data || (remRes as any)?.data || [];
-                const tgData = Array.isArray(tgRes) ? tgRes : (tgRes as any)?.data?.data || (tgRes as any)?.data || [];
+                // const remData = Array.isArray(remRes) ? remRes : (remRes as any)?.data?.data || (remRes as any)?.data || [];
+                // const tgData = Array.isArray(tgRes) ? tgRes : (tgRes as any)?.data?.data || (tgRes as any)?.data || [];
 
                 setTypes(typesData);
                 setCategorys(catData);
 
                 setStatuses(statData);
-                setReminders(remData);
-                setTelegrams(tgData);
+                // setReminders(remData);
+                // setTelegrams(tgData);
             } catch (error) {
               console.error(error);
           }
@@ -527,8 +527,8 @@ function TaskWebpage() {
           categories={categorys}
           types={typs}
           statuses={statuses}
-          reminders={reminders}
-          telegrams={telegrams}
+          // reminders={reminders}
+          // telegrams={telegrams}
         />
       )}
 
@@ -709,10 +709,10 @@ function TaskWebpage() {
                                         <td>ផុតកំណត់</td>
                                         <td>{d?.schedule ? formatDate(String(d.schedule)) : "មិនបានបញ្ចូល"}</td>
                                     </tr>
-                                    <tr>
+                                    {/* <tr>
                                         <td>ការរំលឹក</td>
                                         <td>{reminders.find((e) => String(e.id) === String(d.reminder_id))?.title || "រកមិនឃើញ"}</td>
-                                    </tr>
+                                    </tr> */}
                                     <tr>
                                         <td>ពេលបង្កើត</td>
                                         <td>{d?.created_at ? formatDate(String(d.created_at)) : "មិនបានបញ្ចូល"}</td>
@@ -742,8 +742,8 @@ function TaskWebpage() {
                         <th style={{ textAlign: "center", }}>លុបទិន្នន័យ</th>
                         <th style={{ textAlign: "center", }}>ម៉ឺនុយ</th>
                         <th style={{ textAlign: "center", }}>ផុតកំណត់</th>
-                        <th style={{ textAlign: "center", }}>ការរំលឹក</th>
-                        <th style={{ textAlign: "center", }}>គណនីតេលេក្រាម</th>
+                        {/* <th style={{ textAlign: "center", }}>ការរំលឹក</th>
+                        <th style={{ textAlign: "center", }}>គណនីតេលេក្រាម</th> */}
                         <th>ពេលវេលា</th>
                         <th>សកម្មភាព</th>
                       </tr>
@@ -852,15 +852,15 @@ function TaskWebpage() {
                               </p>
                             </td>
                             {/* reminder  */}
-                            <td style={{ textAlign: "center", }}>
+                            {/* <td style={{ textAlign: "center", }}>
                               <p className="btn btn-task-status">
                                 {reminders.find((e) => String(e.id) === String(d.reminder_id))?.title || "រកមិនឃើញ"}
                               </p>
-                            </td>
+                            </td> */}
                             {/* telegram  */}
-                            <td style={{ textAlign: "center", }}>
+                            {/* <td style={{ textAlign: "center", }}>
                               {telegrams.find((e) => String(e.id) === String(d.telegram_id))?.title || "មិនបានជ្រើស"}
-                            </td>
+                            </td> */}
                             {/* DATE */}
                             <td>
                               {new Date(

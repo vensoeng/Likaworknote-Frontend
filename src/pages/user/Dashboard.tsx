@@ -5,9 +5,9 @@ import { useState, useEffect} from 'react';
 import {getCurrentDate} from '../../config/formatData';
 
 import TypeTaskService from "../../services/typeTaskService";
-import TelegramService from "../../services/telgramService";
+// import TelegramService from "../../services/telgramService";
 import type { TypeTask } from "../../types/TypeTask";
-import type { Telegram } from "../../types/Telegram";
+// import type { Telegram } from "../../types/Telegram";
 
 
 import CategoryService from "../../services/categoryService";
@@ -147,7 +147,7 @@ function Dashboard() {
   // =========================
   const [typs, setTypes] = useState<TypeTask[]>([]);
   const [categorys, setCategorys] = useState<Category[]>([]);
-  const [telegrams, setTelegrams] = useState<Telegram[]>([]);
+  // const [telegrams, setTelegrams] = useState<Telegram[]>([]);
 
   useEffect(() => {
     const loadAllData = async () => {
@@ -155,20 +155,19 @@ function Dashboard() {
             const [
                 typeRes,
                 catRes,
-                tgRes
+                // tgRes
             ] = await Promise.all([
                 TypeTaskService.getTypeTask(),
                 CategoryService.getCategories(),
-                TelegramService.getTelegram(),
+                // TelegramService.getTelegram(),
             ]);
-            console.log("Category:", tgRes);
               // Extract Data
               const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
               const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];
               // const tgData = Array.isArray(tgRes) ? tgRes : (tgRes as any)?.data?.data || (tgRes as any)?.data || [];
               setTypes(typesData);
               setCategorys(catData);
-              setTelegrams(tgRes);
+              // setTelegrams(tgRes);
             } catch (error) {
               console.error(error);
           }
@@ -501,7 +500,7 @@ function Dashboard() {
                   </div>
                   <div className="adnvulrw-con">
                     <blockquote>
-                      <h2>{telegrams?.length}</h2>
+                      <h2>0</h2>
                     </blockquote>
                   </div>
                   <div className="adnvulrw-action df-r">
