@@ -1,0 +1,9 @@
+{
+  "$schema": "https://likaworknote.vercel.app",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
