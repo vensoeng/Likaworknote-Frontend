@@ -48,11 +48,8 @@ export default function TaskModel({
     const [typee, setTypee] = useState<number | "">("");
     const [category, setCategory] = useState<number | "">("");
     const [statuse, setStatuse] = useState<number | "">("");
-    // const [reminder, setReminder] = useState<number | "">("");
-    // const [telegram, setTelegram] = useState<number | "">("");
     const [schedule, setSchedule] = useState("");
     const [rate, setRate] = useState<number | "">(0);
-    // const [getMode, setMode] = useState<string>('');
     
     const [submitting, setSubmitting] =
         useState(false);
@@ -82,17 +79,27 @@ export default function TaskModel({
 
     useEffect(() => {
         if (mode === "edit" && TaskItem) {
-            setTitle(TaskItem.title ?? "");
-            setDes(TaskItem.des ?? "");
-
-            setTypee(Number(TaskItem.type_id) ?? "");
-            setCategory(Number(TaskItem.category_id) ?? "");
-            setStatuse(Number(TaskItem.statuses_id) ?? "");
-            // setReminder(Number(TaskItem.reminder_id) ?? "");
-            // setTelegram(Number(TaskItem.telegram_id) ?? "");
-            setRate(Number(TaskItem.rate) ?? 0);
-
-           setSchedule(toDateInputValue(TaskItem.schedule));
+            setTitle(
+                TaskItem.title ?? ""
+            );
+            setDes(
+                TaskItem.des ?? ""
+            );
+            setTypee(
+                TaskItem.type_id ? Number(TaskItem.type_id) : ""
+            );
+            setCategory(
+                TaskItem.category_id ? Number(TaskItem.category_id) : ""
+            );
+            setStatuse(
+                TaskItem.statuses_id ? Number(TaskItem.statuses_id) : ""
+            );
+            setRate(
+                TaskItem.rate != null ? Number(TaskItem.rate) : 0
+            );
+            setSchedule(
+                toDateInputValue(TaskItem.schedule)
+            );
         }
 
         if (mode === "create") {
@@ -395,7 +402,7 @@ export default function TaskModel({
                                onChange={(e) => setCategory(Number(e.target.value))}
                             >
                                 {categories.length === 0 ? (
-                                    <option value="0">មិនមាន</option>
+                                    <option value="">មិនមាន</option>
                                 ) : (
                                     [...categories].reverse().map((item, index) => (
                                         <option key={item.id || index} value={item.id}>
@@ -420,7 +427,7 @@ export default function TaskModel({
                                 setTypee(Number(e.target.value))
                             }>
                                 {types.length === 0 ? (
-                                    <option value="0">មិនមាន</option>
+                                    <option value="">មិនមាន</option>
                                 ) : (
                                     [...types].reverse().map((item, index) => (
                                         <option key={item.id || index} value={item.id}>
@@ -432,64 +439,6 @@ export default function TaskModel({
                         </div>
                     </div>
                 </div>
-                {/* TELEGRAM  */}
-                {/* <div className="txt-in">
-                    <div className="txtin-bx">
-                        <label htmlFor="sl-telegram">
-                            ជ្រើរើសគណនីតេលេក្រាម
-                        </label>
-                        <div className="txtin-bx">
-                            <select
-                                name="sl-telegram"
-                                id="sl-telegram"
-                                value={telegram}
-                                onChange={(e) =>
-                                    setTelegram(
-                                        e.target.value === ""
-                                            ? ""
-                                            : Number(e.target.value)
-                                    )
-                                }
-                            >
-                                <option value="">មិនជ្រើសរើស</option>
-
-                                {[...telegrams].reverse().map((item, index) => (
-                                    <option
-                                        key={item.id || index}
-                                        value={item.id}
-                                    >
-                                        {item.title}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                </div> */}
-                {/* REMANDER  */}
-                {/* <div className="txt-in">
-                    <div className="txtin-bx">
-                        <label htmlFor="sl-reminder">
-                            ជ្រើរើសការរំលឹក
-                        </label>
-                        <div className="txtin-bx">
-                            <select name="sl-reminder" id="sl-reminder"
-                            value={reminder}
-                            onChange={(e) =>
-                                setReminder(Number(e.target.value))
-                            }>
-                                {reminders.length === 0 ? (
-                                    <option value="0">មិនមាន</option>
-                                ) : (
-                                    [...reminders].reverse().map((item, index) => (
-                                        <option key={item.id || index} value={item.id}>
-                                            {item.title}
-                                        </option>
-                                    ))
-                                )}
-                            </select>
-                        </div>
-                    </div>
-                </div> */}
                 {/* REMANDER  */}
                 <div className="txt-in">
                     <div className="txtin-bx">

@@ -1,17 +1,16 @@
 export interface Task {
   id: number;
-  status: boolean | number | string;
-  type_id: string | null;
-  category_id: string | null;
-  schedule: string | null;
-  statuses_id: string | null;
-  reminder_id: string | null;
-  telegram_id: string | null;
-  rate: string | null;
-  title: string | null;
-  des: string | null;
-  created_at: string | Date;
-  updated_at: string | Date;
+  status: boolean;
+  user_id: number;
+  type_id: number;
+  category_id: number;
+  schedule: string;
+  statuses_id: number;
+  rate: number;
+  title: string;
+  des: string;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ApiResponse<T> {

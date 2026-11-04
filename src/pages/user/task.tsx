@@ -168,38 +168,23 @@ function TaskWebpage() {
     const [typs, setTypes] = useState<TypeTask[]>([]);
     const [categorys, setCategorys] = useState<Category[]>([]);
     const [statuses, setStatuses] = useState<Status[]>([]);
-    // const [reminders, setReminders] = useState<Reminder[]>([]);
-    // const [telegrams, setTelegrams] = useState<Telegram[]>([]);
 
   useEffect(() => {
     const loadAllData = async () => {
         try {
-            const [
-                typeRes,
-                catRes,
-                statRes,
-                // remRes,
-                // tgRes
-            ] = await Promise.all([
-                TypeTaskService.getTypeTask(),
-                CategoryService.getCategories(),
-                StatusService.getStatus(),
-                // ReminderService.getReminder(),
-                TelegramService.getTelegram(),
+            const [typeRes, catRes, statRes] = await Promise.all([
+              TypeTaskService.getTypeTask(),
+              CategoryService.getCategories(),
+              StatusService.getStatus(),
+              TelegramService.getTelegram(),
             ]);
                 // Extract Data
                 const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
                 const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];
                 const statData = Array.isArray(statRes) ? statRes : (statRes as any)?.data?.data || (statRes as any)?.data || [];
-                // const remData = Array.isArray(remRes) ? remRes : (remRes as any)?.data?.data || (remRes as any)?.data || [];
-                // const tgData = Array.isArray(tgRes) ? tgRes : (tgRes as any)?.data?.data || (tgRes as any)?.data || [];
-
                 setTypes(typesData);
                 setCategorys(catData);
-
                 setStatuses(statData);
-                // setReminders(remData);
-                // setTelegrams(tgData);
             } catch (error) {
               console.error(error);
           }

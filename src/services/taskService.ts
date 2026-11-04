@@ -19,14 +19,13 @@ const TaskService = {
     rate: string | number;
   }): Promise<Task> => {
     const payload = {
-      ...data,
+      title: data.title,
+      des: data.des ?? "",
       type_id: Number(data.type_id),
       category_id: Number(data.category_id),
-      statuses_id: Number(data.statuses_id),
-      // reminder_id: Number(data.reminder_id),
-      // telegram_id: data.telegram_id ? Number(data.telegram_id) : undefined,
       schedule: data.schedule,
-      rate: Number(data.rate || 0),
+      statuses_id: Number(data.statuses_id),
+      rate: Number(data.rate ?? 0),
     };
 
     const response = await api.post<ApiResponse<Task>>("/tasks", payload);
