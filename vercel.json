@@ -1,5 +1,5 @@
 {
-  "$schema": "https://likaworknote.vercel.app",
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
       "source": "/(.*)",
