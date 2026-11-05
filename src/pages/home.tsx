@@ -26,7 +26,7 @@ interface HomeProps {
   loginPath?: string;
 }
 
-const Home: React.FC<HomeProps> = ({telegramUsername = "https://t.me/likaworknote_bot",loginPath = "/login",}) => {
+const Home: React.FC<HomeProps> = ({telegramUsername = "https://t.me/vensoeng",loginPath = "/login",}) => {
   const {DEFAULT_AVATAR} = useAuth();
   const requestMessage =
     "សួស្តី ខ្ញុំចង់ស្នើសុំគណនី Likaworknote សម្រាប់សាកល្បងប្រើប្រាស់។";
@@ -316,7 +316,7 @@ const Home: React.FC<HomeProps> = ({telegramUsername = "https://t.me/likaworknot
           </div>
 
           <a
-            href="https://github.com/vensoeng"
+            href="https://github.com/vensoeng/Likaworknote-Frontend"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-cta-button"
