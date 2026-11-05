@@ -87,9 +87,9 @@
 /* ===========this is content============== */
 .wbfm .wbfmcn{
     height: max-content;
-    max-height: calc(100vh - 350px);
+    max-height: calc(100dvh - 350px);
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
     padding-left: 1rem;
     padding-right: 0.6rem;
 }
