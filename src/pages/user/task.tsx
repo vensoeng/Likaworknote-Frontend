@@ -29,14 +29,11 @@ import "../../assets/css/table.css";
 import "../../assets/css/task.css";
 import TypeTaskService from "../../services/typeTaskService";
 import CategoryService from "../../services/categoryService";
-import StatusService from "../../services/status";
-// import ReminderService from "../../services/reminder";
-import TelegramService from "../../services/telgramService";
+import StatusService from "../../services/statusService";
 import type { TypeTask } from "../../types/TypeTask";
 import type { Category } from "../../types/category";
 import type { Status } from "../../types/Status";
-// import type { Reminder } from "../../types/Reminder";
-// import type { Telegram } from "../../types/Telegram";
+
 
 function TaskWebpage() {
   const COMPLETED_STATUS_ID = 1790072865066;
@@ -49,7 +46,7 @@ function TaskWebpage() {
   const [isFilterOpen, setIsFilterOpen] = useState<boolean>(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  // const [itemsPerPage, setItemsPerPage] = useState(10);
+
   const [itemsPerPage] = useState(10);
 
   const [isFormOpen, setIsFormOpen] =
@@ -162,35 +159,36 @@ function TaskWebpage() {
     fetchTask();
   }, []);
 
-    // =========================
-    // ALL DATA NEEDED 
-    // =========================
-    const [typs, setTypes] = useState<TypeTask[]>([]);
-    const [categorys, setCategorys] = useState<Category[]>([]);
-    const [statuses, setStatuses] = useState<Status[]>([]);
+  
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [taskFilter]);
 
+  // =========================
+  // ALL DATA NEEDED 
+  // =========================
+  const [typs, setTypes] = useState<TypeTask[]>([]);
+  const [categorys, setCategorys] = useState<Category[]>([]);
+  const [statuses, setStatuses] = useState<Status[]>([]);
   useEffect(() => {
     const loadAllData = async () => {
-        try {
-            const [typeRes, catRes, statRes] = await Promise.all([
-              TypeTaskService.getTypeTask(),
-              CategoryService.getCategories(),
-              StatusService.getStatus(),
-              TelegramService.getTelegram(),
-            ]);
-                // Extract Data
-                const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
-                const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];
-                const statData = Array.isArray(statRes) ? statRes : (statRes as any)?.data?.data || (statRes as any)?.data || [];
-                setTypes(typesData);
-                setCategorys(catData);
-                setStatuses(statData);
-            } catch (error) {
-              console.error(error);
-          }
-      };
-      
-      loadAllData();
+      try {
+        const [typeRes, catRes, statRes] = await Promise.all([
+          TypeTaskService.getTypeTask(),
+          CategoryService.getCategories(),
+          StatusService.getStatus(),
+        ]);
+
+        setTypes(Array.isArray(typeRes) ? typeRes : []);
+        setCategorys(Array.isArray(catRes) ? catRes : []);
+        setStatuses(Array.isArray(statRes) ? statRes : []);
+
+      } catch (error) {
+        console.error("Failed to load task form data:", error);
+      }
+    };
+
+    loadAllData();
   }, []);
   // =========================
   // FOR DATE
@@ -511,8 +509,6 @@ function TaskWebpage() {
           categories={categorys}
           types={typs}
           statuses={statuses}
-          // reminders={reminders}
-          // telegrams={telegrams}
         />
       )}
 
@@ -835,16 +831,6 @@ function TaskWebpage() {
                                 {d?.schedule ? formatDate(String(d.schedule)) : "មិនបានបញ្ចូល"}
                               </p>
                             </td>
-                            {/* reminder  */}
-                            {/* <td style={{ textAlign: "center", }}>
-                              <p className="btn btn-task-status">
-                                {reminders.find((e) => String(e.id) === String(d.reminder_id))?.title || "រកមិនឃើញ"}
-                              </p>
-                            </td> */}
-                            {/* telegram  */}
-                            {/* <td style={{ textAlign: "center", }}>
-                              {telegrams.find((e) => String(e.id) === String(d.telegram_id))?.title || "មិនបានជ្រើស"}
-                            </td> */}
                             {/* DATE */}
                             <td>
                               {new Date(

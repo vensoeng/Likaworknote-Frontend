@@ -5,9 +5,7 @@ import WebLoader from "../WebLoader";
 
 import type { Task } from "../../types/Task";
 import type { Category } from "../../types/category";
-// import type { Telegram } from "../../types/Telegram";
 import type { Status } from "../../types/Status";
-// import type { Reminder } from "../../types/Reminder";
 import type { TypeTask } from "../../types/TypeTask";
 
 
@@ -21,8 +19,6 @@ interface FormModalProps {
     types: TypeTask[];
     categories: Category[];
     statuses: Status[];
-    // reminders: Reminder[];
-    // telegrams: Telegram[];
 }
 
 
@@ -34,8 +30,6 @@ export default function TaskModel({
     types,
     categories,
     statuses,
-    // reminders,
-    // telegrams,
 }: FormModalProps) {
 
     // =========================
@@ -79,50 +73,51 @@ export default function TaskModel({
 
     useEffect(() => {
         if (mode === "edit" && TaskItem) {
-            setTitle(
-                TaskItem.title ?? ""
-            );
-            setDes(
-                TaskItem.des ?? ""
-            );
+            setTitle(TaskItem.title ?? "");
+            setDes(TaskItem.des ?? "");
             setTypee(
-                TaskItem.type_id ? Number(TaskItem.type_id) : ""
+            TaskItem.type_id ? Number(TaskItem.type_id) : ""
             );
             setCategory(
-                TaskItem.category_id ? Number(TaskItem.category_id) : ""
+            TaskItem.category_id ? Number(TaskItem.category_id) : ""
             );
             setStatuse(
-                TaskItem.statuses_id ? Number(TaskItem.statuses_id) : ""
+            TaskItem.statuses_id ? Number(TaskItem.statuses_id) : ""
             );
             setRate(
-                TaskItem.rate != null ? Number(TaskItem.rate) : 0
+            TaskItem.rate != null ? Number(TaskItem.rate) : 0
             );
-            setSchedule(
-                toDateInputValue(TaskItem.schedule)
-            );
+            setSchedule(toDateInputValue(TaskItem.schedule));
         }
-
         if (mode === "create") {
             setTitle("");
             setDes("");
-
-            setTypee(types[0]?.id ?? "");
-            setCategory(categories[0]?.id ?? "");
-            setStatuse(statuses[0]?.id ?? "");
-            // setReminder(reminders[0]?.id ?? "");
-            // setTelegram(telegrams[0]?.id ?? "");
-
+            setTypee("");
+            setCategory("");
+            setStatuse("");
             setRate(0);
             setSchedule("");
         }
+    }, [mode, TaskItem]);
+    useEffect(() => {
+        if (mode !== "create") return;
+        if (typee === "" && types.length > 0) {
+            setTypee(types[0].id);
+        }
+        if (category === "" && categories.length > 0) {
+            setCategory(categories[0].id);
+        }
+        if (statuse === "" && statuses.length > 0) {
+            setStatuse(statuses[0].id);
+        }
     }, [
         mode,
-        TaskItem,
         types,
         categories,
         statuses,
-        // reminders,
-        // telegrams,
+        typee,
+        category,
+        statuse
     ]);
     // =========================
     // SUBMIT
@@ -133,7 +128,14 @@ export default function TaskModel({
     ) => {
 
         e.preventDefault();
-
+        if (
+            typee === "" ||
+            category === "" ||
+            statuse === ""
+        ) {
+            alert("សូមជ្រើសរើស Status, Category និង Type ជាមុនសិន");
+            return;
+        }
         try {
         setSubmitting(true);
 
@@ -152,8 +154,6 @@ export default function TaskModel({
                 type_id: typee,
                 category_id: category,
                 statuses_id: statuse,
-                // reminder_id: reminder,
-                // telegram_id: telegram,
                 rate,
             });
 
@@ -164,8 +164,6 @@ export default function TaskModel({
                 type_id: typee,
                 category_id: category,
                 statuses_id: statuse,
-                // reminder_id: reminder,
-                // telegram_id: telegram,
                 schedule,
                 rate,
             });
@@ -194,8 +192,6 @@ export default function TaskModel({
                     type_id: typee,
                     category_id: category,
                     statuses_id: statuse,
-                    // reminder_id: reminder,
-                    // telegram_id: telegram,
                     rate,
                     schedule,
                 }
@@ -215,20 +211,6 @@ export default function TaskModel({
         } catch (error: any) {
             // console.error("========== CREATE TASK ERROR ==========");
 
-            // console.error(
-            //     "STATUS:",
-            //     error.response?.status
-            // );
-
-            // console.error(
-            //     "RESPONSE DATA:",
-            //     JSON.stringify(
-            //         error.response?.data,
-            //         null,
-            //         2
-            //     )
-            // );
-
             console.error(
                 "ERRORS:",
                 JSON.stringify(
@@ -237,18 +219,6 @@ export default function TaskModel({
                     2
                 )
             );
-
-            // console.error(
-            //     "REQUEST DATA:",
-            //     error.config?.data
-            // );
-
-            // console.error(
-            //     "REQUEST HEADERS:",
-            //     error.config?.headers
-            // );
-
-            // console.error("======================================");
 
             alert(
                 error.response?.data?.message ||
@@ -261,27 +231,6 @@ export default function TaskModel({
         }
     };
 
-    useEffect(() => {
-        console.log("statuse STATE:", statuse);
-    }, [statuse]);
-
-    // UI
-    // =========================
-    // const fetchData = async <T,>(
-    //     fetchFn: () => Promise<T[]>,
-    //     setter: React.Dispatch<React.SetStateAction<T[]>>,
-    //         entityName: string
-    //         ) => {
-    //         try {
-    //             const data = await fetchFn();
-    //             setter(Array.isArray(data) ? data : []);
-    //     } catch (error) {
-    //         console.error(`Failed to fetch ${entityName}:`, error);
-    //         setter([]);
-    //     }
-    // };
-
-    
     return (
 
         <FormLayout
@@ -377,15 +326,22 @@ export default function TaskModel({
                                 name="sl-status"
                                 id="sl-status"
                                 value={statuse}
+                                required
+                                disabled={statuses.length === 0}
                                 onChange={(e) => {
-                                    setStatuse(Number(e.target.value));
+                                    const value = e.target.value;
+                                    setStatuse(value === "" ? "" : Number(value));
                                 }}
                             >
-                                {[...statuses].reverse().map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                        {item.des}
-                                    </option>
-                                ))}
+                                {statuses.length === 0 ? (
+                                    <option value="">សូមជ្រើសរើសស្ថានភាព</option>
+                                ) : (
+                                    [...statuses].reverse().map((item) => (
+                                        <option key={item.id} value={item.id}>
+                                            {item.des}
+                                        </option>
+                                    ))
+                                )}
                             </select>
                         </div>
                     </div>
@@ -397,12 +353,19 @@ export default function TaskModel({
                             ជ្រើរើសការងារ
                         </label>
                         <div className="txtin-bx">
-                            <select name="sl-category" id="sl-category" 
+                            <select
+                                name="sl-category" 
+                                id="sl-category" 
                                 value={category}
-                               onChange={(e) => setCategory(Number(e.target.value))}
+                                required
+                                disabled={categories.length === 0}
+                                onChange={(e) =>{
+                                    const value = e.target.value;
+                                    setCategory(value === "" ? "" : Number(value))
+                                }}
                             >
                                 {categories.length === 0 ? (
-                                    <option value="">មិនមាន</option>
+                                    <option value="">ជ្រើរើសការងារ</option>
                                 ) : (
                                     [...categories].reverse().map((item, index) => (
                                         <option key={item.id || index} value={item.id}>
@@ -421,13 +384,19 @@ export default function TaskModel({
                             ជ្រើរើសប្រភេទភារកិច្ច
                         </label>
                         <div className="txtin-bx">
-                            <select name="sl-type" id="sl-type"
-                            value={typee}
-                            onChange={(e) =>
-                                setTypee(Number(e.target.value))
-                            }>
+                            <select 
+                                name="sl-type" 
+                                id="sl-type"
+                                value={typee}
+                                required
+                                disabled={types.length === 0}
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    setTypee(value === "" ? "" : Number(value))
+                                }}
+                            >
                                 {types.length === 0 ? (
-                                    <option value="">មិនមាន</option>
+                                    <option value="">ជ្រើរើសប្រភេទ</option>
                                 ) : (
                                     [...types].reverse().map((item, index) => (
                                         <option key={item.id || index} value={item.id}>
@@ -466,14 +435,14 @@ export default function TaskModel({
                         <div className="txtin-bx">
                             <input
                                 type="number"
-                                className="txt-title"
-                                id="txt-rate"
-                                placeholder="សូមបញ្ចូលភាគរយការងារដែលសម្រេច"
+                                min="0"
                                 max="100"
+                                step="1"
                                 value={rate}
-                                onChange={(e) =>
-                                    setRate(Number(e.target.value))
-                                }
+                                onChange={(e) => {
+                                    const value = e.target.value;
+                                    setRate(value === "" ? "" : Number(value));
+                                }}
                             />
                         </div>
                     </div>

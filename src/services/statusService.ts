@@ -1,16 +1,24 @@
 import api from "../api/axios.ts";
 import type { Status, ApiResponse } from "../types/Status.ts";
 
+type StatusPayload = {
+  title: string;
+  des?: string;
+  value?: string;
+};
+
 const StatusService = {
   getStatus: async (): Promise<Status[]> => {
-    const response = await api.get<ApiResponse<Status[]>>("/task-statuses");
+    const response = await api.get<ApiResponse<Status[]>>(
+      "/task-statuses"
+    );
+
     return response.data.data;
   },
 
-  createStatus: async (data: {
-    title: string;
-    des: string;
-  }): Promise<Status> => {
+  createStatus: async (
+    data: StatusPayload
+  ): Promise<Status> => {
     const response = await api.post<ApiResponse<Status>>(
       "/task-statuses",
       data
@@ -18,14 +26,11 @@ const StatusService = {
 
     return response.data.data;
   },
-  
+
   updateStatus: async (
     id: number,
-    data: {
-      title: string;
-      des: string;
-    }
-  ) => {
+    data: StatusPayload
+  ): Promise<Status> => {
     const response = await api.put<ApiResponse<Status>>(
       `/task-statuses/${id}`,
       data
@@ -33,11 +38,10 @@ const StatusService = {
 
     return response.data.data;
   },
-  
+
   deleteStatus: async (id: number): Promise<void> => {
     await api.delete(`/task-statuses/${id}`);
-  },
-
+  }
 };
 
 export default StatusService;
