@@ -82,8 +82,6 @@ function TaskTodayPage() {
                 );
                 setNavTitle('ភារកិច្ច');
             }
-            // console.log("Type of query", type);
-            // console.log("Task Today API:", data);
 
         } catch (error) {
             console.error(
@@ -104,7 +102,6 @@ function TaskTodayPage() {
     // Arror back action
     //=============================
     const navigate = useNavigate();
-    // const [linkBack, setLinkBack] = useState<any>('/');
     const [linkBack] = useState<any>('/');
     const handleBack = () => {
         if (window.history.length > 2) {

@@ -33,7 +33,7 @@ import '../../assets/css/dashboard.css';
 import TaskService from '../../services/taskService';
 import type { Task } from '../../types/Task';
 import UIList from '../../components/task_list_UI_650px';
-import SupportImage from '../../assets/img/support.png';
+import SupportImage from '../../assets/img/support-Likaworknote.png';
 
 function Dashboard() {
   const { user, loading } = useAuth();
