@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 // this is home page 
+import {HomeNav, HomeFooter} from './pages/layout/header_home'; //layout
 import HomePage from "./pages/home";
-
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -17,6 +17,8 @@ import TypeTask from "./pages/user/typeTask";
 import Setting from "./pages/user/Setting";
 import Task from "./pages/user/task";
 import TaskTodayPage from "./pages/taskToday";
+//public Doc likaworknote
+import GuideWebPage from "./pages/doc/guide";
 
 function AdminLayoutFn() {
   return (
@@ -28,6 +30,15 @@ function AdminLayoutFn() {
     </div>
   );
 }
+function HomeLayoutFn() {
+  return (
+    <div className="home-shell">
+      <HomeNav />
+      <Outlet />
+      <HomeFooter/>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -36,10 +47,9 @@ function App() {
         {/* Guest */}
         <Route element={<GuestRoute />}>
           {/* Home webpage */}
-          <Route
-            path="/"
-            element={<HomePage />}
-          />
+          <Route path="/" element={<HomeLayoutFn/>}>
+            <Route index element={<HomePage />} />
+          </Route>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Route>
@@ -86,7 +96,10 @@ function App() {
           </Route>
 
         </Route>
-      
+        {/* public route */}
+        <Route element={<HomeLayoutFn/>}>
+          <Route path="/guid" element={<GuideWebPage/>} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,0 +1,43 @@
+.guide-wbp *{
+    font-weight: normal;
+    line-height: 1.8;
+    color: var(--sg-color-text);
+}
+.guide-wbp .gwp{
+    max-width: 950px;
+    margin: 2rem auto;
+    min-height: 100vh;
+    padding: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+.guide-wbp .gwp .gw-title{
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--sg-color-la);
+}
+.guide-wbp .gwp .gw-list-txt{
+    padding-left: 1.8rem;
+}
+.guide-wbp .gwp .gw-list-txt li{
+    list-style: circle;
+}
+.lika-dashboard-img{
+    background: var(--sg-color-brand);
+}
+.gwcard-sms{
+    max-width: 350px;
+    margin: 2rem auto;
+    border-radius: 0.8rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+.gwcard-sms .gwcard-sms-box{
+    padding: 0.8rem;
+}
+
+.asp16x9{
+    aspect-ratio: 16 / 9;
+    border-radius: 0.8rem;
+}

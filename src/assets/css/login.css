@@ -3,7 +3,8 @@ body:has(.main-login){
   width: 100%;
   position: relative;
   overflow-x: hidden;
-    z-index: 1;
+z-index: 1;
+background: var(--sg-bglight);
 }
 .main-login svg path{
     stroke: var(--sg-color-brand) !important;

@@ -4,6 +4,8 @@ import FormLayout from "../form_layout";
 import CategoryService from "../../services/categoryService";
 import WebLoader from "../WebLoader";
 
+
+
 import type { Category } from "../../types/category";
 
 interface FormModalProps {
@@ -49,7 +51,6 @@ export default function CategoryModel({
   const handleSubmit = async (
     e: React.FormEvent
   ) => {
-
     e.preventDefault();
 
     try {
@@ -96,19 +97,48 @@ export default function CategoryModel({
 
       // Tell Admin page
       // save was successful
-
       onSuccess(savedCategory);
 
       // Close modal
-
       onClose();
 
-    } catch (error) {
+    } catch (error: any) {
     
+      console.error("========== CREATE CATEGORY ERROR ==========");
       console.error(
-        `Failed to ${mode} category:`,
-        error
+          "STATUS:",
+          error.response?.status
       );
+      console.error(
+          "RESPONSE DATA:",
+          JSON.stringify(
+              error.response?.data,
+              null,
+              2
+          )
+      );
+      console.error(
+          "ERRORS:",
+          JSON.stringify(
+              error.response?.data?.errors,
+              null,
+              2
+          )
+      );
+      console.error(
+          "REQUEST DATA:",
+          error.config?.data
+      );
+      console.error(
+          "REQUEST HEADERS:",
+          error.config?.headers
+      );
+      console.error("======================================");
+      alert(
+          error.response?.data?.message ||
+          "មានបញ្ហាក្នុងការបញ្ជូនទិន្នន័យ"
+      );
+
 
     } finally {
 
