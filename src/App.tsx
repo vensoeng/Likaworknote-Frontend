@@ -98,7 +98,7 @@ function App() {
         </Route>
         {/* public route */}
         <Route element={<HomeLayoutFn/>}>
-          <Route path="/guid" element={<GuideWebPage/>} />
+          <Route path="/guide" element={<GuideWebPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>
