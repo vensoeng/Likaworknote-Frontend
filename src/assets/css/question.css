@@ -1,0 +1,106 @@
+.wqu{
+    position: relative;
+    background: var(--sg-bglight);
+}
+.wqu-box{
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    z-index: 2;
+    border-top: none;
+}
+.wqu .wqu-h{
+    position: sticky;
+    top: 60px;
+    z-index: 1;
+}
+.wqu .wquh-box{
+    padding: 1.5rem;
+}
+.wqu .wqu-h h2{
+    font-size: 2rem;
+}
+.wqu .wqu-c{
+
+}
+.wqu .wquc-box{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.wqu .wquc-box li{
+    /* margin: 0 auto; */
+    padding: 0rem 0.8rem;
+    border-top: 1px solid var(--sg-border-00);
+    background: var(--sg-bglight);
+}
+.wqu .wquc-box li:first-child{
+    border-top: none;
+}
+.wqu .wquc-box .qulh-box{
+    min-height: 50px;
+    padding: 1rem 0rem;
+    align-items: flex-start;
+}
+.wqu .wquc-box .qulh-box h3{
+    font-size: 1.1rem;
+}
+.wqu .wquc-box .qulh-box .icon{
+    margin-left: 1rem;
+    min-width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    border-radius: 0rem;
+    background: var(--sg-bglight);
+    box-sizing: border-box;
+    user-select: none;
+    border: 1px dashed var(--sg-color-def);
+}
+.wqu .wquc-box .qulh-box .icon svg{
+    width: 1.2rem;
+}
+.wqu .wquc-box .qul-c{
+    overflow: hidden;
+    height: 0rem;
+    opacity: 0;
+    padding: 0rem;
+    transition: all ease-in-out 0.3s;
+}
+.wqu .wquc-box li.active .qul-c{
+    min-height: 100px;
+    height: max-content;
+    opacity: 1;
+    padding-bottom: 1rem;
+}
+.wqu .wquc-box .qulc-box p{
+    line-height: 1.4;
+    font-size: 1rem;
+}
+@media screen and (max-width: 650px){
+    .wqu-box{
+        display: block;
+    }
+    .wqu .wqu-c{
+        width: initial;
+    }
+    .wqu .wquc-box{
+        border-left: none;
+    }
+    .wqu .wquc-box li:first-child{
+        border-top: 1px solid var(--sg-border-00);
+    }
+}
+@media screen and (max-width: 600px) {
+    .wqu .wqu-h h2{
+        font-size: 1.85rem;
+    }
+    .wqu .wquc-box .qulh-box h3{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .wqu .wqu-h h2{
+        font-size: 1.5rem;
+    }
+}

@@ -5,16 +5,13 @@ import type { UserProfile } from "../../types/updateMe";
 
 import UserModel from "../../components/form/user";
 
-import { formatDate } from "../../config/formatData";
-import WebLoader from "../../components/WebLoader";
-import UIList from "../../components/task_list_UI_650px";
 
-import { UserEdit, More, Edit, Magicpen, Send2, Add, LoginCurve } from "iconsax-reactjs";
+import { UserEdit, Magicpen, Send2, Add, LoginCurve } from "iconsax-reactjs";
 import '../../assets/css/setting.css';
 import '../../assets/css/from.css';
 
 function Setting() {
-  const {loading, user, getProfileImage, updateUser, logout } = useAuth();
+  const {user, getProfileImage, updateUser, logout } = useAuth();
   //this is for fetch user 
   const [updateMeData, setUpdateMeData] = useState<UserProfile | null>(null);
   const fetchUser = () => {
@@ -66,12 +63,6 @@ function Setting() {
 
     logout();
   }
-
-  // =========================
-  // FOR RESPONSIVE
-  // =========================
-  const screenWidth = window.innerWidth;
-
   return (
     <div className="admin-content admin-settingwp">
       {/* =========================
@@ -203,127 +194,6 @@ function Setting() {
               </div>
             </div>
           </div>
-          
-          {/* this is user set telegram account  */}
-          {loading ? (
-            <WebLoader>
-              រង់ចាំបន្ដិចយើងកំពុងទាញយកទិន្នន័យ
-              ដើម្បីដំណើរការ
-            </WebLoader>
-          ) : (
-              <section
-                className={screenWidth <= 650 ? "rui65" : "tb-section db-c"}
-                id={screenWidth <= 650 ? "rui65-tb" : "main-tb"}
-              >
-              <div className="tb-section-body db-c">
-                {screenWidth <= 650 ? (
-                /* MOBILE LAYOUT */
-                <div className="ui65 db-c" style={{marginTop: '1rem'}}>
-                    <UIList
-                      title={user?.username}
-                      description={user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}
-                      icon=""
-                      tableData={
-                          <>
-                          <tr>
-                              <td>ឈ្មោះគណនី</td>
-                              <td>@{user?.username}</td>
-                          </tr>
-                          <tr>
-                            <td>IDគណនី</td>
-                            <td>{user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}</td>
-                          </tr>
-                          </>
-                      }
-                      onEdit={() => handleOpenUpdateMeForm()}
-                    />
-                </div>
-              ) : (
-              <div className="box">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ឈ្មោះគណនី</th>
-                      <th>លេខសម្គាល់</th>
-                      <th style={{ textAlign: "center", }}>ម៉ឺនុយ</th>
-                      <th>ពេលវេលា</th>
-                      <th>សកម្មភាព</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      {/* TITLE */}
-                      <td>
-                        <div className="box df-l">
-                          <div className="text">
-                            <h2>
-                              {user?.firstName + '' + user?.lastName}
-                            </h2>
-                            <blockquote>
-                              <p>
-                                @{user?.username}
-                              </p>
-                            </blockquote>
-                          </div>
-                        </div>
-                      </td>
-                      {/* telegram Id  */}
-                      <td className="data-telegram-id">
-                        <div className="btn">
-                          <p>{user?.telegram_id === null ? 'មិនបានបញ្ចូល' : String(user?.telegram_id)}</p>
-                        </div>
-                      </td>
-                      {/* MENU */}
-                      <td
-                        style={{
-                          textAlign: "center",
-                        }}
-                      >
-                        <button
-                          type="button"
-                          className="btn btn-ra icon-ra-sm btn-status"
-                          onClick={() =>
-                            handleOpenUpdateMeForm()
-                          }
-                        >
-                          <span>
-                            <More />
-                          </span>
-                        </button>
-                      </td>
-                      {/* DATE */}
-                      <td>
-                        {formatDate(String(user?.created_at))}
-                      </td>
-                      {/* EDIT */}
-                      <td>
-                        <button
-                          type="button"
-                          className="df-c btn-edit-action"
-                          onClick={() =>
-                            handleOpenUpdateMeForm()
-                          }
-                        >
-                          <span>
-                            កែប្រែ
-                          </span>
-                          <Edit size="16" />
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              )}
-              {/* footer  */}
-              <div className="tb-foot">
-                <div className="box df-c">
-                  ©LikaWorkNote
-                </div>
-              </div>
-            </div>
-          </section>
-          )}
         </div>
       </div>
     </div>

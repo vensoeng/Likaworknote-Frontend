@@ -209,7 +209,7 @@ export default function UserModel({
           </div>
           
           {/* TITLE */}
-          <div className="txt-in">
+          <div className="txt-in" style={{display: 'none'}}>
             <div className="txtin-bx">
               <label htmlFor="txt-telegram">
                 គណនី Telegram

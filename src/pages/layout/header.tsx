@@ -27,8 +27,6 @@ function AdminLayout() {
                 return 'ផ្ទាំងភារកិច្ច';
             case '/type/tasks':
                 return 'ផ្ទាំងប្រភេទ';
-            case '/category/tasks':
-                return 'ផ្ទាំងការងារ';
             case '/user/setting':
                 return 'ផ្ទាំងកំណត់';
             default:
@@ -146,19 +144,6 @@ function AdminLayout() {
                                         <p>ប្រភេទភារកិច្ច</p>
                                     </NavLink>
                                 </li>
-                                <li>
-                                    <NavLink 
-                                        className={({ isActive }) => isActive ? "df-l active" : "df-l"} 
-                                        to="/category/tasks"
-                                        onClick={handleNavigation}
-                                    >
-                                        <div className='icon icon-sm over-h df-c'>
-                                            <BrifecaseTimer />
-                                        </div>
-                                        <p>បែងចែកការងារ</p>
-                                    </NavLink>
-                                </li>
-
                                 <li>
                                     <NavLink 
                                         className={({ isActive }) => isActive ? "df-l active" : "df-l"} 

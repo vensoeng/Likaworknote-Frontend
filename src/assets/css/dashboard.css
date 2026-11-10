@@ -288,6 +288,9 @@ body .task-action-section .tb-section-body{
     .admin-content{
 
     }
+    .admin-dashboard{
+        margin: 0rem auto;
+    }
 }
 @media only screen and (max-width: 650px){
     .admin-dashboard .adnav .nall05 .adnvul,
@@ -332,6 +335,9 @@ body .task-action-section .tb-section-body{
     }
 }
 @media only screen and (max-width: 450px){
+    .admin-dashboard{
+        margin: 0rem auto;
+    }
     .adnav .adnav-head{
         margin: 0rem 0.5rem;
     }
