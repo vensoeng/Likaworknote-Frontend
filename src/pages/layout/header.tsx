@@ -11,7 +11,6 @@ import {
     HomeHashtag,
     Setting2,
     MainComponent,
-    BrifecaseTimer
 } from 'iconsax-reactjs';
 
 function AdminLayout() {
