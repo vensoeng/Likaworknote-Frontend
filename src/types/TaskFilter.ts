@@ -2,7 +2,7 @@ export interface TaskFilter {
   search: string;
 
   statusIds: number[];
-  categoryIds: number[];
+
   typeIds: number[];
 
   createdFrom: string;
@@ -23,7 +23,6 @@ export const defaultTaskFilter: TaskFilter = {
   search: "",
 
   statusIds: [],
-  categoryIds: [],
   typeIds: [],
 
   createdFrom: "",

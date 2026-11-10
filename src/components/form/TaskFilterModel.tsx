@@ -10,7 +10,6 @@ import {
 import type { TaskFilter } from "../../types/TaskFilter";
 
 import type { TypeTask } from "../../types/TypeTask";
-import type { Category } from "../../types/category";
 import type { Status } from "../../types/Status";
 
 interface TaskFilterModelProps {
@@ -21,7 +20,6 @@ interface TaskFilterModelProps {
   onApply: (filter: TaskFilter) => void;
 
   statuses: Status[];
-  categories: Category[];
   types: TypeTask[];
 }
 
@@ -30,7 +28,6 @@ function TaskFilterModel({
   onClose,
   onApply,
   statuses,
-  categories,
   types,
 }: TaskFilterModelProps) {
 
@@ -63,7 +60,6 @@ function TaskFilterModel({
   const toggleId = (
     key:
       | "statusIds"
-      | "categoryIds"
       | "typeIds",
     id: number
   ) => {
@@ -89,7 +85,6 @@ function TaskFilterModel({
     setDraftFilter({
       search: "",
       statusIds: [],
-      categoryIds: [],
       typeIds: [],
 
       createdFrom: "",
@@ -242,69 +237,6 @@ function TaskFilterModel({
             </div>
 
           </div>
-
-
-          {/* =====================================
-              CATEGORY
-          ===================================== */}
-
-          <div className="task-filter-group">
-
-            <div className="task-filter-label df-s">
-
-              <label>
-                ការបែងចែកការងារ
-              </label>
-
-              {draftFilter.categoryIds.length > 0 && (
-                <span>
-                  បានជ្រើស {draftFilter.categoryIds.length}
-                </span>
-              )}
-
-            </div>
-
-
-            <div className="task-filter-options">
-
-              {categories.map((category) => {
-
-                const id = Number(category.id);
-
-                const checked =
-                  draftFilter.categoryIds.includes(id);
-
-                return (
-                  <label
-                    key={category.id}
-                    className={`task-filter-option ${
-                      checked ? "active" : ""
-                    }`}
-                  >
-
-                    <input
-                      type="checkbox"
-                      checked={checked}
-                      onChange={() =>
-                        toggleId(
-                          "categoryIds",
-                          id
-                        )
-                      }
-                    />
-
-                    <span>
-                      {category.title}
-                    </span>
-
-                  </label>
-                );
-              })}
-
-            </div>
-
-          </div>
-
 
           {/* =====================================
               TYPE

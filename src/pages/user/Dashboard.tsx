@@ -5,15 +5,7 @@ import { useState, useEffect} from 'react';
 import {getCurrentDate} from '../../config/formatData';
 
 import TypeTaskService from "../../services/typeTaskService";
-// import TelegramService from "../../services/telgramService";
 import type { TypeTask } from "../../types/TypeTask";
-// import type { Telegram } from "../../types/Telegram";
-
-
-import CategoryService from "../../services/categoryService";
-import WebLoader from '../../components/WebLoader';
-import ShareModal from '../../components/share_model';
-import type { Category } from '../../types/category';
 
 import { 
   Setting2,
@@ -25,25 +17,16 @@ import {
   BrifecaseTimer,
   Send2,
   Timer,
-  Eye,
-  Link1,
   Global
 } from "iconsax-reactjs";
 import '../../assets/css/dashboard.css';
 import TaskService from '../../services/taskService';
 import type { Task } from '../../types/Task';
-import UIList from '../../components/task_list_UI_650px';
 import SupportImage from '../../assets/img/support-Likaworknote.png';
 
 function Dashboard() {
   const { user, loading } = useAuth();
   const currentDate = getCurrentDate();
-
-  // const getProfileImage = (imagePath: string | null | undefined) => {
-  //   if (!imagePath) return DEFAULT_AVATAR;
-  //   if (imagePath.startsWith("http")) return imagePath;
-  //   return `${VITE_API_URL}${STORAGE_URL}${imagePath}`;
-  // };
 
   const [tasks, setTask] =
     useState<Task[]>([]);
@@ -61,8 +44,6 @@ function Dashboard() {
   // =========================
   const IN_PROGRESS_STATUS_ID = 1790072831425;
 
-  // const TODAY_SCHEDULE_ID = 1789618173166;
-  // const TOMORROW_SCHEDULE_ID = 1789618192370;
   const COMPLETED_STATUS_ID = 1790072865066;
 
   // =========================
@@ -122,9 +103,6 @@ function Dashboard() {
       // Dashboard tasks
       const filteredTasks = filterTodayTasks(taskList);
       setTasksToday(filteredTasks);
-      // console.log(filteredTasks);
-      // console.log( "All Tasks:",taskList);
-      // console.log("Dashboard Tasks:", filteredTasks );
       setCompletedCounts(getCompletedTaskCounts(taskList))
 
     } catch (error) {
@@ -146,7 +124,6 @@ function Dashboard() {
   // ALL DATA NEEDED 
   // =========================
   const [typs, setTypes] = useState<TypeTask[]>([]);
-  const [categorys, setCategorys] = useState<Category[]>([]);
   // const [telegrams, setTelegrams] = useState<Telegram[]>([]);
 
   useEffect(() => {
@@ -154,20 +131,15 @@ function Dashboard() {
         try {
             const [
                 typeRes,
-                catRes,
                 // tgRes
             ] = await Promise.all([
                 TypeTaskService.getTypeTask(),
-                CategoryService.getCategories(),
                 // TelegramService.getTelegram(),
             ]);
               // Extract Data
               const typesData = Array.isArray(typeRes) ? typeRes : (typeRes as any)?.data?.data || (typeRes as any)?.data || [];
-              const catData = Array.isArray(catRes) ? catRes : (catRes as any)?.data?.data || (catRes as any)?.data || [];
-              // const tgData = Array.isArray(tgRes) ? tgRes : (tgRes as any)?.data?.data || (tgRes as any)?.data || [];
               setTypes(typesData);
-              setCategorys(catData);
-              // setTelegrams(tgRes);
+
             } catch (error) {
               console.error(error);
           }
@@ -179,16 +151,6 @@ function Dashboard() {
   if (loading) {
     return <p>Loading...</p>;
   }
-
-  //=======================
-  //Fillter count task category 
-  //=======================
-  const filterCategoryCount = (categoryId: string | number, taskList: Task[] = []) => {
-    if (!categoryId || !taskList) return 0;
-    return taskList.filter(
-      (task) => String(task.category_id) === String(categoryId)
-    ).length;
-  };
 
   // =========================
   // COMPLETED TASK COUNTS
@@ -337,27 +299,11 @@ function Dashboard() {
   };
 
   // =========================
-  // SHARE MODEL
-  // =========================
-  const [showShare, setShowShare] = useState(false);
-  const WEB_URL = window.location.origin;
-  const [shareUrl, setShareUrl] = useState<any>('');
-
-  // =========================
   // FOR RESPONSIVE
   // =========================
-  const screenWidth = window.innerWidth;
 
   return (
     <div className='admin-dashboard'>
-      {/* =========================
-        SHARE MODEL
-      ========================= */}
-      <ShareModal
-          isOpen={showShare}
-          url={shareUrl}
-          onClose={() => setShowShare(false)}
-      />
       {/* <Form /> */}
       <div className='admin-content sa'>
         {user && (
@@ -380,10 +326,6 @@ function Dashboard() {
                   <p>
                     {currentDate.khmer}<br/>
                    <span>{currentDate.english}</span></p>
-                  {/* <NavLink to={`/task/${user?.username}/${currentDay}`} className='btn'>
-                    បញ្ចប់ថ្ងៃនេះ
-                    <Stickynote/>
-                  </NavLink> */}
                 </div>
               </div>
             </div>
@@ -395,129 +337,6 @@ function Dashboard() {
           </div>
         </div>
         )}
-        {/* =========================
-          NAV
-        ========================= */}
-        <div className="adnav">
-          <div className="adnav-head">
-            <div className="adnvh-box df-s">
-              <h2 className="df-l">
-                <Flash
-                  className="icon icon-sm over-h"
-                />
-                បញ្ជីនៃទិន្នន័យ
-              </h2>
-            </div>
-          </div>
-          {/* =========================
-              STAT / ACTION BOX
-          ========================= */}
-          <div className="adnv-box nall05">
-            <div className="adnvul scroll-x">
-              {/* list  */}
-              <div className="adnvul-row">
-                <div className="adnvulrw-bx">
-                  <div className="adnvulrwbxh df-l">
-                    <Stickynote />
-                    <h2>
-                      ភារកិច្ចទាំងអស់
-                    </h2>
-                  </div>
-                  <div className="adnvulrw-con">
-                    <blockquote>
-                      <h2>{tasks?.length}</h2>
-                    </blockquote>
-                  </div>
-                  <div className="adnvulrw-action df-r">
-                    <NavLink to='/tasks'
-                      type="button"
-                      className="btn"
-                    >
-                      <Magicpen />
-                      បន្ថែមភារកិច្ច
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-              {/* list  */}
-              <div className="adnvul-row">
-                <div className="adnvulrw-bx">
-                  <div className="adnvulrwbxh df-l">
-                    <MainComponent />
-                    <h2>
-                      ប្រភេទការងារ
-                    </h2>
-                  </div>
-                  <div className="adnvulrw-con">
-                    <blockquote>
-                      <h2>{categorys?.length}</h2>
-                    </blockquote>
-                  </div>
-                  <div className="adnvulrw-action df-r">
-                    <NavLink to='/type/tasks'
-                      type="button"
-                      className="btn"
-                    >
-                      <Magicpen />
-                      បន្ថែមប្រភេទ
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-              {/* this is list  */}
-              <div className="adnvul-row">
-                <div className="adnvulrw-bx">
-                  <div className="adnvulrwbxh df-l">
-                    <BrifecaseTimer />
-                    <h2>
-                      ប្រភេទភារកិច្ច
-                    </h2>
-                  </div>
-                  <div className="adnvulrw-con">
-                    <blockquote>
-                      <h2>{typs?.length}</h2>
-                    </blockquote>
-                  </div>
-                  <div className="adnvulrw-action df-r">
-                    <NavLink to='/category/tasks'
-                      type="button"
-                      className="btn"
-                    >
-                      <Magicpen />
-                      បន្ថែមការងារ
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-              {/* this is list  */}
-              <div className="adnvul-row">
-                <div className="adnvulrw-bx">
-                  <div className="adnvulrwbxh df-l">
-                    <Send2 />
-                    <h2>
-                      គណនីតេលេក្រាម
-                    </h2>
-                  </div>
-                  <div className="adnvulrw-con">
-                    <blockquote>
-                      <h2>0</h2>
-                    </blockquote>
-                  </div>
-                  <div className="adnvulrw-action df-r">
-                    <NavLink to='/user/setting'
-                      type="button"
-                      className="btn"
-                    >
-                      <Magicpen />
-                      បន្ថែមគណនី
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-              {/* end  */}
-            </div>
-          </div>
-        </div>
         {/* =========================
           TASK TODAY
         ========================= */}
@@ -582,6 +401,78 @@ function Dashboard() {
             <div className="tkt-f">
               <div className="tktf-bx df-c">
                 <NavLink to={'/task/today/' + user?.id} className="btn">របាយការណ៍</NavLink>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* =========================
+          NAV
+        ========================= */}
+        <div className="adnav">
+          <div className="adnav-head">
+            <div className="adnvh-box df-s">
+              <h2 className="df-l">
+                <Flash
+                  className="icon icon-sm over-h"
+                />
+                បញ្ជីនៃទិន្នន័យ
+              </h2>
+            </div>
+          </div>
+          {/* =========================
+              STAT / ACTION BOX
+          ========================= */}
+          <div className="adnv-box nall05">
+            <div className="adnvul scroll-x">
+              {/* list  */}
+              <div className="adnvul-row">
+                <div className="adnvulrw-bx">
+                  <div className="adnvulrwbxh df-l">
+                    <Stickynote />
+                    <h2>
+                      ភារកិច្ចទាំងអស់
+                    </h2>
+                  </div>
+                  <div className="adnvulrw-con">
+                    <blockquote>
+                      <h2>{tasks?.length}</h2>
+                    </blockquote>
+                  </div>
+                  <div className="adnvulrw-action df-r">
+                    <NavLink to='/tasks'
+                      type="button"
+                      className="btn"
+                    >
+                      <Magicpen />
+                      បន្ថែមភារកិច្ច
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+              {/* this is list  */}
+              <div className="adnvul-row">
+                <div className="adnvulrw-bx">
+                  <div className="adnvulrwbxh df-l">
+                    <BrifecaseTimer />
+                    <h2>
+                      ប្រភេទភារកិច្ច
+                    </h2>
+                  </div>
+                  <div className="adnvulrw-con">
+                    <blockquote>
+                      <h2>{typs?.length}</h2>
+                    </blockquote>
+                  </div>
+                  <div className="adnvulrw-action df-r">
+                    <NavLink to='/category/tasks'
+                      type="button"
+                      className="btn"
+                    >
+                      <Magicpen />
+                      បន្ថែមការងារ
+                    </NavLink>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -709,140 +600,6 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        {/* =========================
-          TASK SHARING 
-        ========================= */}
-        <div className="adnav">
-          <div className="adnav-head">
-            <div className="adnvh-box df-s">
-              <h2 className="df-l">
-                <Flash
-                  className="icon icon-sm over-h"
-                />
-                ចំនួនបែងចែកភារកិច្ច
-              </h2>
-            </div>
-          </div>
-        </div>
-        {loading ? (
-          <WebLoader>
-            រង់ចាំបន្ដិចយើងកំពុងទាញយកទិន្នន័យ
-            ដើម្បីដំណើរការ
-          </WebLoader>
-        ) : 
-          screenWidth <= 650 ? (
-          <div className="ui65 db-c">
-            {categorys.length === 0 ? (
-              <div
-              style={{
-                textAlign: "center",
-                padding: "30px",
-                color: "#64748b",
-              }}
-              >មិនមានទិន្នន័យបែងចែកភារកិច្ចឡើយ។</div>
-              ) : (
-              categorys.map((d, index) => (
-                <UIList
-                  key={d.id || index}
-                  title={String(d.title)}
-                  description={`មានចំនួន ${filterCategoryCount(d.id, tasks)}`}
-                  icon='/report.png'
-                />
-              ))
-            )}
-            </div>
-          ) : (
-          <section
-            className="tb-section db-c task-action-section"
-            id="main-tb"
-          >
-            <div className="tb-section-body db-c">
-              <div className="box">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>ចំណងជើង</th>
-                      <th style={{textAlign: "right", }}>សកម្មភាព</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {categorys.length === 0 ? (
-                      <tr>
-                        <td
-                          colSpan={2}
-                          style={{
-                            textAlign: "center",
-                            padding: "30px",
-                            color: "#64748b",
-                          }}
-                        >
-                          មិនមានទិន្នន័យបែងចែកភារកិច្ចឡើយ។
-                        </td>
-                      </tr>
-                    ) : (
-                      categorys.map((d, index) => (
-                        <tr
-                          key={d.id || index}
-                        >
-                          {/* TITLE */}
-                          <td>
-                            <div className="box df-l">
-                              <div className="img" style={{ background: 'none'}}>
-                                <img 
-                                  src='/report.png'
-                                  alt="share views"
-                                />
-                              </div>
-                              <div className="text">
-                                  <h2>{d.title}</h2>
-                                  <div className="df-l">
-                                    <p className='btn-categorycount'>មានចំនួន{filterCategoryCount(d.id, tasks)}</p>
-                                  </div>
-                              </div>
-                            </div>
-                          </td>
-                          {/* EDIT */}
-                          <td>
-                            <div className="td-action df-r">
-                              <NavLink to={'/task/user/' + d.user_id + '/category/' + d.id}
-                                type="button"
-                                className="df-c btn-edit-action btn"
-                              >
-                                <span>
-                                  ពិនិត្យ
-                                </span>
-                                <Eye size="16" />
-                              </NavLink>
-                              <button
-                                type="button"
-                                className="df-c btn-edit-action btn"
-                                onClick={() => {
-                                  setShareUrl(WEB_URL + '/task/category/' + d.id);
-                                  setShowShare(true);
-                                }}
-                              >
-                                <span>
-                                  ចែករំលែក
-                                </span>
-                                <Link1 size="16" />
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      ))
-                    )}
-                  </tbody>
-                </table>
-              </div>
-              {/* footer  */}
-              <div className="tb-foot">
-                <div className="box df-c">
-                  ©LikaWorkNote
-                </div>
-              </div>
-            </div>
-          </section>
-          )}
         {/* =========================
           banner support
         ========================= */}

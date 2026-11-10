@@ -11,7 +11,6 @@ const TaskService = {
     title: string;
     des: string;
     type_id: string | number;
-    category_id: string | number;
     statuses_id: string | number;
     schedule: string;
     rate: string | number;
@@ -20,7 +19,6 @@ const TaskService = {
       title: data.title,
       des: data.des ?? "",
       type_id: Number(data.type_id),
-      category_id: Number(data.category_id),
       schedule: data.schedule,
       statuses_id: Number(data.statuses_id),
       rate: Number(data.rate ?? 0),
@@ -36,7 +34,6 @@ const TaskService = {
       title: string;
       des: string;
       type_id: string | number;
-      category_id: string | number;
       statuses_id: string | number;
       schedule: string;
       rate: string | number;
@@ -45,7 +42,6 @@ const TaskService = {
     const payload = {
       ...data,
       ...(data.type_id && { type_id: Number(data.type_id) }),
-      ...(data.category_id && { category_id: Number(data.category_id) }),
       ...(data.statuses_id && { statuses_id: Number(data.statuses_id) }),
       ...(data.schedule !== undefined && { schedule: data.schedule }),
       ...(data.rate !== undefined && { rate: Number(data.rate) }),

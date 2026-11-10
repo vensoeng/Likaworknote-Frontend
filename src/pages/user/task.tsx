@@ -28,10 +28,8 @@ import {
 import "../../assets/css/table.css";
 import "../../assets/css/task.css";
 import TypeTaskService from "../../services/typeTaskService";
-import CategoryService from "../../services/categoryService";
 import StatusService from "../../services/statusService";
 import type { TypeTask } from "../../types/TypeTask";
-import type { Category } from "../../types/category";
 import type { Status } from "../../types/Status";
 
 
@@ -58,7 +56,7 @@ function TaskWebpage() {
   const [selectedTask, setSelectedTask] =
     useState<Task| null>(null);
 
-  //fetch for get category task
+  //fetch for get tasks
   const fetchTask = async () => {
     try {
       setLoading(true);
@@ -73,7 +71,7 @@ function TaskWebpage() {
 
     } catch (error) {
       console.error(
-        "Failed to fetch categories:",
+        "Failed to fetch task:",
         error
       );
 
@@ -103,18 +101,18 @@ function TaskWebpage() {
     setSelectedTask(null);
   };
 
-  const handleCategorySuccess = (
+  const handleTaskSuccess = (
     task: Task
   ) => {
     if (formMode === "create") {
-      // Add new category to table
+      // Add new to table
       setTask((prev) => [
         task,
         ...prev,
       ]);
 
     } else {
-      // Update existing category
+      // Update existing 
       setTask((prev) =>
         prev.map((item) =>
           item.id === task.id
@@ -127,7 +125,7 @@ function TaskWebpage() {
   //delete action 
   const [textMsdelete,setTextMsdelete] = useState<string>('');
   const [isDelete, setIsDelete] = useState<boolean>(false);
-  const handleDeletetask = async (id: number) => {
+  const handleDeleteTask = async (id: number) => {
     const confirmed = window.confirm(
       "តើអ្នកពិតជាចង់លុប Task នេះមែនទេ?"
     );
@@ -147,7 +145,7 @@ function TaskWebpage() {
 
       setTextMsdelete('សំណើរលុបទិន្នន័យរបស់អ្នកបានជោគជ័យ!')
     } catch (error) {
-      console.error("Failed to delete category:", error);
+      console.error("Failed to delete Task:", error);
       alert("ការលុបមិនបានជោគជ័យទេ!");
     }finally{
       setIsDelete(false);
@@ -168,19 +166,16 @@ function TaskWebpage() {
   // ALL DATA NEEDED 
   // =========================
   const [typs, setTypes] = useState<TypeTask[]>([]);
-  const [categorys, setCategorys] = useState<Category[]>([]);
   const [statuses, setStatuses] = useState<Status[]>([]);
   useEffect(() => {
     const loadAllData = async () => {
       try {
-        const [typeRes, catRes, statRes] = await Promise.all([
+        const [typeRes, statRes] = await Promise.all([
           TypeTaskService.getTypeTask(),
-          CategoryService.getCategories(),
           StatusService.getStatus(),
         ]);
 
         setTypes(Array.isArray(typeRes) ? typeRes : []);
-        setCategorys(Array.isArray(catRes) ? catRes : []);
         setStatuses(Array.isArray(statRes) ? statRes : []);
 
       } catch (error) {
@@ -228,18 +223,6 @@ function TaskWebpage() {
         taskFilter.statusIds.includes(
           Number(task.statuses_id)
         );
-
-
-      // =====================================
-      // CATEGORY
-      // =====================================
-
-      const matchesCategory =
-        taskFilter.categoryIds.length === 0 ||
-        taskFilter.categoryIds.includes(
-          Number(task.category_id)
-        );
-
 
       // =====================================
       // TYPE
@@ -365,7 +348,6 @@ function TaskWebpage() {
       return (
         matchesSearch &&
         matchesStatus &&
-        matchesCategory &&
         matchesType &&
         // matchesSchedule &&
         matchesCreatedFrom &&
@@ -491,7 +473,6 @@ function TaskWebpage() {
             setIsFilterOpen(false);
           }}
           statuses={statuses}
-          categories={categorys}
           types={typs}
         />
       )}
@@ -503,10 +484,9 @@ function TaskWebpage() {
       {isFormOpen && (
         <TaskModel
           onClose={handleCloseForm}
-          onSuccess={handleCategorySuccess}
+          onSuccess={handleTaskSuccess}
           mode={formMode}
           TaskItem={selectedTask}
-          categories={categorys}
           types={typs}
           statuses={statuses}
         />
@@ -672,14 +652,6 @@ function TaskWebpage() {
                                         <td>{statuses.find((e) => String(e.id) === String(d.statuses_id))?.des}</td>
                                     </tr>
                                     <tr>
-                                        <td>ការងារ</td>
-                                        <td>
-                                          {categorys.find(
-                                            (e) => String(e.id) === String(d.category_id)
-                                          )?.title || "រកមិនឃើញ"}
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td>ប្រភេទភារកិច្ច</td>
                                         <td>
                                           {typs.find((e) => String(e.id) === String(d.type_id))?.title || "រកមិនឃើញ"}
@@ -704,7 +676,7 @@ function TaskWebpage() {
                                   </>
                                   )
                                 }
-                                onDelete={() => handleDeletetask(d.id)}
+                                onDelete={() => handleDeleteTask(d.id)}
                                 onEdit={() => handleOpenEdit(d)}
                               />
                             ))
@@ -717,7 +689,6 @@ function TaskWebpage() {
                       <tr>
                         <th>ចំណងជើង</th>
                         <th style={{ textAlign: "center", }}>ស្ថានភាព</th>
-                        <th style={{ textAlign: "center", }}>ការងារ</th>
                         <th style={{ textAlign: "center", }}>ប្រភេទភារកិច្ច</th>
                         <th style={{ textAlign: "center", }}>លុបទិន្នន័យ</th>
                         <th style={{ textAlign: "center", }}>ម៉ឺនុយ</th>
@@ -778,12 +749,6 @@ function TaskWebpage() {
                             <td style={{ textAlign: "center" }}>
                               <p className="btn btn-task-status btn-sts-true" style={{ backgroundColor: getStatusClass(Number(d.statuses_id)).bg, }}>{statuses.find((e) => String(e.id) === String(d.statuses_id))?.des}</p>
                             </td>
-                            {/* this is category work */}
-                            <td style={{ textAlign: "center", }}>
-                              {categorys.find(
-                                (e) => String(e.id) === String(d.category_id)
-                              )?.title || "រកមិនឃើញ"}
-                            </td>
                             {/* this is type  */}
                             <td style={{ textAlign: "center", }}>
                               {typs.find((e) => String(e.id) === String(d.type_id))?.title || "រកមិនឃើញ"}
@@ -799,7 +764,7 @@ function TaskWebpage() {
                                 className="bg-n"
                               >
                                 <div className="btn btn-ra btn-delete"
-                                  onClick={() => handleDeletetask(d.id)}
+                                  onClick={() => handleDeleteTask(d.id)}
                                 >
                                   <span>
                                     លុបភារកិច្ច

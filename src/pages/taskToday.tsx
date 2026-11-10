@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate} from 'react-router-dom';
-// import { useAuth } from "../context/AuthContext";
 import { formatDate } from "../config/formatData";
 import TaskTotayService from "../services/taskTodayService";
 
@@ -17,8 +16,7 @@ import type { TaskToday } from "../types/taskToday";
 
 
 function TaskTodayPage() {
-    const { id, type, userId } = useParams();
-    // const { VITE_API_URL } = useAuth();
+    const { id, type} = useParams();
     const [loading, setLoading] = useState<boolean>(true);
     const [NavTitle, setNavTitle] = useState<string>('ភារកិច្ច');
 
@@ -54,17 +52,6 @@ function TaskTodayPage() {
                     Array.isArray(data) ? data : []
                 );
                 setNavTitle('ភារកិច្ចដែលបានបញ្ចប់ក្នុងឆ្នាំនេះ');
-            }else if(type === 'category')
-            {
-                // const { userId } = useParams();
-                if (!userId) return;
-
-                const data = await TaskTotayService.getTaskCategory(Number(id),Number(userId));
-                setTasks(
-                    Array.isArray(data) ? data : []
-                );
-                setNavTitle('ភារកិច្ចដែលបានបញ្ចប់' + data[0]?.category?.title);
-                
             }else if(type === 'today')
             {
                 const data = await TaskTotayService.getTaskToday(Number(id));
@@ -199,11 +186,6 @@ function TaskTodayPage() {
                                         </div>
 
                                         <div className="report-field">
-                                            <span>ការងារ</span>
-                                            <strong>{task.category?.title || "-"}</strong>
-                                        </div>
-
-                                        <div className="report-field">
                                             <span>ប្រភេទភារកិច្ច</span>
                                             <strong>{task.type?.title || "-"}</strong>
                                         </div>
@@ -241,7 +223,6 @@ function TaskTodayPage() {
                                     <th>ល.រ</th>
                                     <th>ចំណងជើង</th>
                                     <th>ស្ថានភាព</th>
-                                    <th>ការងារ</th>
                                     <th>ប្រភេទភារកិច្ច</th>
                                     <th>ផុតកំណត់</th>
                                     <th>ពេលបង្កើត</th>
@@ -264,7 +245,6 @@ function TaskTodayPage() {
                                                 <p className="des09stb">{task.des}</p>
                                             </td>
                                             <td>{task.taskStatus?.des || "-"}</td>
-                                            <td>{task.category?.title || "-"}</td>
                                             <td>{task.type?.title || "-"}</td>
                                             <td>{formatDate(task.schedule)}</td>
                                             <td>{task.created || "-"}</td>

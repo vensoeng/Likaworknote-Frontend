@@ -4,7 +4,6 @@ import TaskService from "../../services/taskService";
 import WebLoader from "../WebLoader";
 
 import type { Task } from "../../types/Task";
-import type { Category } from "../../types/category";
 import type { Status } from "../../types/Status";
 import type { TypeTask } from "../../types/TypeTask";
 
@@ -12,12 +11,9 @@ import type { TypeTask } from "../../types/TypeTask";
 interface FormModalProps {
     onClose: () => void;
     onSuccess: (Task: Task) => void;
-
     mode: "create" | "edit";
     TaskItem: Task | null;
-
     types: TypeTask[];
-    categories: Category[];
     statuses: Status[];
 }
 
@@ -28,7 +24,6 @@ export default function TaskModel({
     mode,
     TaskItem,
     types,
-    categories,
     statuses,
 }: FormModalProps) {
 
@@ -40,7 +35,6 @@ export default function TaskModel({
     const [des, setDes] = useState("");
 
     const [typee, setTypee] = useState<number | "">("");
-    const [category, setCategory] = useState<number | "">("");
     const [statuse, setStatuse] = useState<number | "">("");
     const [schedule, setSchedule] = useState("");
     const [rate, setRate] = useState<number | "">(0);
@@ -78,9 +72,6 @@ export default function TaskModel({
             setTypee(
             TaskItem.type_id ? Number(TaskItem.type_id) : ""
             );
-            setCategory(
-            TaskItem.category_id ? Number(TaskItem.category_id) : ""
-            );
             setStatuse(
             TaskItem.statuses_id ? Number(TaskItem.statuses_id) : ""
             );
@@ -93,7 +84,6 @@ export default function TaskModel({
             setTitle("");
             setDes("");
             setTypee("");
-            setCategory("");
             setStatuse("");
             setRate(0);
             setSchedule("");
@@ -104,19 +94,14 @@ export default function TaskModel({
         if (typee === "" && types.length > 0) {
             setTypee(types[0].id);
         }
-        if (category === "" && categories.length > 0) {
-            setCategory(categories[0].id);
-        }
         if (statuse === "" && statuses.length > 0) {
             setStatuse(statuses[0].id);
         }
     }, [
         mode,
         types,
-        categories,
         statuses,
         typee,
-        category,
         statuse
     ]);
     // =========================
@@ -130,7 +115,6 @@ export default function TaskModel({
         e.preventDefault();
         if (
             typee === "" ||
-            category === "" ||
             statuse === ""
         ) {
             alert("សូមជ្រើសរើស Status, Category និង Type ជាមុនសិន");
@@ -152,7 +136,6 @@ export default function TaskModel({
                 title,
                 des,
                 type_id: typee,
-                category_id: category,
                 statuses_id: statuse,
                 rate,
             });
@@ -162,7 +145,6 @@ export default function TaskModel({
                 title,
                 des,
                 type_id: typee,
-                category_id: category,
                 statuses_id: statuse,
                 schedule,
                 rate,
@@ -190,7 +172,6 @@ export default function TaskModel({
                     title,
                     des,
                     type_id: typee,
-                    category_id: category,
                     statuses_id: statuse,
                     rate,
                     schedule,
@@ -339,37 +320,6 @@ export default function TaskModel({
                                     [...statuses].reverse().map((item) => (
                                         <option key={item.id} value={item.id}>
                                             {item.des}
-                                        </option>
-                                    ))
-                                )}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                {/* CATEGORY WORK  */}
-                <div className="txt-in">
-                    <div className="txtin-bx">
-                        <label htmlFor="sl-category">
-                            ជ្រើរើសការងារ
-                        </label>
-                        <div className="txtin-bx">
-                            <select
-                                name="sl-category" 
-                                id="sl-category" 
-                                value={category}
-                                required
-                                disabled={categories.length === 0}
-                                onChange={(e) =>{
-                                    const value = e.target.value;
-                                    setCategory(value === "" ? "" : Number(value))
-                                }}
-                            >
-                                {categories.length === 0 ? (
-                                    <option value="">ជ្រើរើសការងារ</option>
-                                ) : (
-                                    [...categories].reverse().map((item, index) => (
-                                        <option key={item.id || index} value={item.id}>
-                                            {item.title}
                                         </option>
                                     ))
                                 )}

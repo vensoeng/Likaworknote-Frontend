@@ -24,13 +24,6 @@ export interface TaskToday {
         des: string;
     };
 
-    category?: {
-        id: number;
-        title: string;
-        des: string;
-        status: boolean;
-    };
-
     taskStatus?: {
         id: number;
         title: string;
