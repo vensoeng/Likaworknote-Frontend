@@ -37,7 +37,7 @@ export default function GuideWebPage (){
                         តាមរយៈមគ្គុទ្ទេសក៍នេះ អ្នកនឹងស្វែងយល់ពីរបៀបបង្កើតគណនី ចូលប្រើប្រាស់កម្មវិធី កំណត់ព័ត៌មានគណនី បង្កើតប្រភេទភារកិច្ច និងគ្រប់គ្រងភារកិច្ចរបស់អ្នក។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_app.png" alt="likaworknote - dashboard image." />
+                <img style={{aspectRatio: "4/3", maxWidth: '650px', margin: "2rem auto"}} className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_storyboard.gif" alt="likaworknote - dashboard image." />
                 {/* step 1 */}
                 <h2 className='gw-title'>ជំហានទី១៖ បង្កើតគណនីតាមរយៈ Telegram Bot</h2>
                 <blockquote>
