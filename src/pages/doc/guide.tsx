@@ -37,7 +37,7 @@ export default function GuideWebPage (){
                         តាមរយៈមគ្គុទ្ទេសក៍នេះ អ្នកនឹងស្វែងយល់ពីរបៀបបង្កើតគណនី ចូលប្រើប្រាស់កម្មវិធី កំណត់ព័ត៌មានគណនី បង្កើតប្រភេទភារកិច្ច និងគ្រប់គ្រងភារកិច្ចរបស់អ្នក។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_app.png" alt="likaworknote - dashboard image." />
                 {/* step 1 */}
                 <h2 className='gw-title'>ជំហានទី១៖ បង្កើតគណនីតាមរយៈ Telegram Bot</h2>
                 <blockquote>
@@ -51,7 +51,7 @@ export default function GuideWebPage (){
                     <li>ចុចលើប្រអប់ Search ហើយវាយពាក្យ @likaworknote_bot។</li>
                     <li>ជ្រើសរើស Bot ដែលមានឈ្មោះ LikaWorkNote ហើយចូលទៅកាន់ផ្ទាំងសន្ទនា។</li>
                 </ul>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_search.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>២. ចាប់ផ្តើមប្រើប្រាស់ Bot</h2>
                 <blockquote>
                     <p className='gw-text'>
@@ -59,7 +59,7 @@ export default function GuideWebPage (){
                         ប្រសិនបើអ្នកមិនឃើញប៊ូតុង Start ទេ អ្នកអាចវាយពាក្យ /start នៅក្នុងប្រអប់សារ រួចចុច Send។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_start.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>៣. រង់ចាំការបង្កើតគណនី</h2>
                 <blockquote>
                     <p className='gw-text'>
@@ -118,7 +118,7 @@ export default function GuideWebPage (){
                         នៅក្នុងសារដែល Bot បានផ្ញើមក អ្នកអាចចុចលើប៊ូតុង Open LikaWorkNote ដើម្បីបើកកម្មវិធី។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_open.png" alt="likaworknote - dashboard image." />
                 <blockquote>
                     <p className='gw-text'>
                         ប្រសិនបើការបង្កើតគណនីមិនបានជោគជ័យ Bot នឹងផ្ញើសារជូនដំណឹងដូចខាងក្រោម៖
@@ -166,7 +166,7 @@ export default function GuideWebPage (){
                        បន្ទាប់មកចុចប៊ូតុង ចូលគណនី ។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_login.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>២. ស្គាល់ផ្ទាំងគ្រប់គ្រង</h2>
                 <blockquote>
                     <p className='gw-text'>
@@ -190,7 +190,7 @@ export default function GuideWebPage (){
                     <li>បំពេញព័ត៌មានដែលអ្នកចង់កែប្រែ និងកំណត់ពាក្យសម្ងាត់ថ្មី។</li>
                     <li>រក្សាទុកការផ្លាស់ប្តូរ។</li>
                 </ul>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_password.png" alt="likaworknote - dashboard image." />
                 <blockquote>
                     <p className='gw-text'>
                         <strong style={{fontWeight: '600'}}>ចំណាំ៖</strong> សូមប្រើពាក្យសម្ងាត់ដែលមានសុវត្ថិភាព និងកុំចែករំលែកព័ត៌មានចូលគណនីរបស់អ្នកទៅកាន់អ្នកដទៃ។
@@ -221,7 +221,7 @@ export default function GuideWebPage (){
                     </ul>
                     <div>5.	ចុចប៊ូតុងរក្សាទុក ដើម្បីបង្កើតប្រភេទថ្មី។</div>
                 </div>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_type.png" alt="likaworknote - dashboard image." />
                 <blockquote>
                     <p className='gw-text'>
                         <strong style={{fontWeight: '600'}}>គន្លឹះ៖</strong>អ្នកគួររៀបចំប្រភេទភារកិច្ចឱ្យស្របទៅតាមលក្ខណៈការងាររបស់អ្នក ដើម្បីងាយស្រួលស្វែងរក និងតាមដាននៅពេលក្រោយ។
@@ -239,7 +239,7 @@ export default function GuideWebPage (){
                     <li>ជ្រើសរើស ភារកិច្ច។</li>
                     <li>ចុចប៊ូតុង បន្ថែមភារកិច្ច។</li>
                 </ul>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_task.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>២. បំពេញព័ត៌មានភារកិច្ច</h2>
                 <blockquote>
                     <p className='gw-text'>
@@ -282,7 +282,6 @@ export default function GuideWebPage (){
                         <strong style={{fontWeight: '600'}}>ចំណាំ៖</strong>អាចបំពេញតាមវឌ្ឍនភាពការងារជាក់ស្តែងរបស់អ្នក។
                     </p>
                 </blockquote>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>៣. រក្សាទុកភារកិច្ច</h2>
                 <blockquote>
                     <p className='gw-text'>
@@ -318,7 +317,7 @@ export default function GuideWebPage (){
                     <div>4.	កម្មវិធី LikaWorkNote នឹងបើកឡើងវិញ។</div>
                     <div>5.	ប្រសិនបើកម្មវិធីតម្រូវឱ្យចូលគណនី សូមបញ្ចូល Email និង Password របស់អ្នក។</div>
                 </div>
-                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_dashboard.png" alt="likaworknote - dashboard image." />
+                <img className='img-c asp16x9 lika-dashboard-img' src="/likaworknote_openApp.png" alt="likaworknote - dashboard image." />
                 <h2 className='gw-title'>សំណួរដែលសួរញឹកញាប់ (Frequently Asked Questions)</h2>
                 <QuestionsLayout faqDatas={questionList} />
                 <h2 className='gw-title'>ត្រូវការជំនួយបន្ថែមមែនទេ?</h2>

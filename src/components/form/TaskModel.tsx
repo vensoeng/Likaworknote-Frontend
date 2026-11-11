@@ -384,6 +384,7 @@ export default function TaskModel({
                         </label>
                         <div className="txtin-bx">
                             <input
+                                className="txt-title"
                                 type="number"
                                 min="0"
                                 max="100"
