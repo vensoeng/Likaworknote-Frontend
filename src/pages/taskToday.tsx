@@ -154,7 +154,7 @@ function TaskTodayPage() {
             </nav>
             {loading ? (
                 <WebLoader>
-                    Loading...
+                    កំពុងទាញយកទិន្នន័យដើម្បីបង្ហាញ...
                 </WebLoader>
             ) : (
                 <div className="sim-report" ref={printRef}>
