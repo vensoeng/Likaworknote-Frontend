@@ -232,7 +232,7 @@ function TaskTodayPage() {
                             <tbody>
                                 {tasks.length === 0 ? (
                                     <tr>
-                                        <td colSpan={8} className="empty-cell">
+                                        <td colSpan={7} className="empty-cell">
                                             រកមិនឃើញទិន្នន័យសូមព្យាយាមវិធីផ្សេង
                                         </td>
                                     </tr>
