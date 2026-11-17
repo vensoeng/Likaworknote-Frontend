@@ -89,13 +89,13 @@ export function HomeFooter() {
                 </NavLink>
 
                 <p className="footer-about-text">
-                Likaworknote គឺជាកម្មវិធីសម្រាប់គ្រប់គ្រង
-                និងតាមដានភារកិច្ចប្រចាំថ្ងៃ ជួយឱ្យការងារ
-                របស់អ្នកមានរបៀបរៀបរយ និងមានប្រសិទ្ធភាព។
+                    Likaworknote គឺជាកម្មវិធីសម្រាប់គ្រប់គ្រង
+                    និងតាមដានភារកិច្ចប្រចាំថ្ងៃ ជួយឱ្យការងារ
+                    របស់អ្នកមានរបៀបរៀបរយ និងមានប្រសិទ្ធភាព។
                 </p>
 
                 <div className="footer-open-source">
-                <span>Open Source Project · Early Access</span>
+                    <span>Open Source Project · Early Access</span>
                 </div>
 
                 <div className="footer-socials">
@@ -123,7 +123,7 @@ export function HomeFooter() {
                 <ul className="footer-links">
                 <li><a href="/">ទំព័រដើម</a></li>
                 <li><a href="/#features">មុខងារកម្មវិធី</a></li>
-                <li><a href="/#steps">របៀបប្រើប្រាស់</a></li>
+                <li><a href="/guide">របៀបប្រើប្រាស់</a></li>
                 <li><a href="/#about">អំពី Likaworknote</a></li>
                 </ul>
             </div>

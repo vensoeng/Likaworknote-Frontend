@@ -13,6 +13,9 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+
+import AdvertisementPopup from "../components/AdvertisementPopup";
+
 import '../assets/css/home.css';
 
 interface HomeProps {
@@ -34,6 +37,8 @@ const Home: React.FC<HomeProps> = ({telegramUsername = "likaworknote_bot",loginP
 
   return (
     <main className="home-page">
+      {/* advertisment  */}
+      <AdvertisementPopup/>
       {/* Hero */}
       <section className="hero-section">
         <div className="hero-content">
