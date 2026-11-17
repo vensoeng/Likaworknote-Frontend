@@ -102,7 +102,7 @@ export default function AdvertisementPopup() {
         </div>
 
         {/* Ad Content */}
-        <a href="/service/" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '24px', overflow: 'hidden' }}>
+        <a href="/guide" target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: '24px', overflow: 'hidden' }}>
           <img 
             ref={imageRef}
             src="/advertisement.png" 
