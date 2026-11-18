@@ -127,7 +127,7 @@ function TaskWebpage() {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const handleDeleteTask = async (id: number) => {
     const confirmed = window.confirm(
-      "តើអ្នកពិតជាចង់លុប Task នេះមែនទេ?"
+      "តើអ្នកពិតជាចង់លុបភារកិច្ចនេះមែនទេ?"
     );
 
     if (!confirmed) {

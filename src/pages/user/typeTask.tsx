@@ -194,7 +194,7 @@ function TypeTaskWebpage() {
   const [isDelete, setIsDelete] = useState<boolean>(false);
   const handleDeleteTypetask = async (id: number) => {
     const confirmed = window.confirm(
-      "តើអ្នកពិតជាចង់លុប Task type នេះមែនទេ?"
+      "តើអ្នកពិតជាចង់លុបប្រភេទភារកិច្ចនេះមែនទេ?"
     );
 
     if (!confirmed) {
