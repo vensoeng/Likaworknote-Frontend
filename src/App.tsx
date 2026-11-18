@@ -19,7 +19,7 @@ import Task from "./pages/user/task";
 import TaskTodayPage from "./pages/taskToday";
 //public Doc likaworknote
 import GuideWebPage from "./pages/doc/guide";
-
+import AboutUsWebPage from "./pages/aboutUse";
 function AdminLayoutFn() {
   return (
     <div className="admin-shell">
@@ -99,6 +99,7 @@ function App() {
         {/* public route */}
         <Route element={<HomeLayoutFn/>}>
           <Route path="/guide" element={<GuideWebPage/>} />
+          <Route path="/about-us" element={<AboutUsWebPage/>} />
         </Route>
       </Routes>
     </BrowserRouter>

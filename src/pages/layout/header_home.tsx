@@ -122,7 +122,6 @@ export function HomeFooter() {
 
                 <ul className="footer-links">
                 <li><a href="/">ទំព័រដើម</a></li>
-                <li><a href="/#features">មុខងារកម្មវិធី</a></li>
                 <li><a href="/guide">របៀបប្រើប្រាស់</a></li>
                 <li><a href="/#about">អំពី Likaworknote</a></li>
                 </ul>
