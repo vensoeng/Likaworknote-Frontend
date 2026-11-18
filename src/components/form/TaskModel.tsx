@@ -117,7 +117,7 @@ export default function TaskModel({
             typee === "" ||
             statuse === ""
         ) {
-            alert("សូមជ្រើសរើស Status, Category និង Type ជាមុនសិន");
+            alert("សូមជ្រើសរើសស្ថានភាពភារកិច្ច និង ប្រភេទភារកិច្ចជាមុនសិន");
             return;
         }
         try {
@@ -300,7 +300,7 @@ export default function TaskModel({
                 <div className="txt-in">
                     <div className="txtin-bx">
                         <label htmlFor="sl-status">
-                            ជ្រើរើសស្ថានភាពការងារ
+                            ជ្រើរើសស្ថានភាពភារកិច្ច
                         </label>
                         <div className="txtin-bx">
                             <select
