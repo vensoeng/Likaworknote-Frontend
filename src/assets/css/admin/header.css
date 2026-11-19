@@ -556,3 +556,75 @@ body:has(.task-filter-overlay){
     margin: 0rem 0.5rem;
   }
 }
+
+/* =================this is tab link======================= */
+.wbtbln{
+  position: fixed;
+  width: 100%;
+  height: fit-content;
+  left: 0rem;
+  bottom: 0rem;
+  z-index: 999999999;
+  opacity: 1;
+  transition: all ease-in-out 0.5s;
+  display: none;
+}
+body:has(.active-dash) .wbtbln{
+  opacity: 0;
+}
+@media only screen and (max-width: 1200px) {
+  .wbtbln{
+    display: block;
+  }
+  .admin-shell{
+    padding-bottom: 100px;
+  }
+}
+.wbtbln .tbln-bx{
+  margin: 0.5rem 1rem;
+  overflow: hidden;
+  max-height: 150px;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.8rem;
+  background: var(--sg-bglight);
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+.wbtbln .tbln-bx .list{
+  width: 100%;
+  background: transparent;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 0.8rem;
+}
+.wbtbln .tbln-bx .list.active{
+  background: var(--sg-bgblack);
+}
+.wbtbln .tbln-bx .list .l-bx{
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  padding: 0.5rem;
+}
+.wbtbln .tbln-bx .list .icon{
+  height: 1.8rem;
+  width: 2rem;
+  margin: 0 auto;
+}
+.wbtbln .tbln-bx .list.active .icon path{
+  stroke: var(--sg-color-brand);
+}
+.wbtbln .tbln-bx .list .txt p{
+  font-size: 0.9rem;
+  text-align: center;
+}
+.wbtbln .tbln-bx .list.active .txt p{
+  color: var(--sg-color-brand);
+}
+@media only screen and (max-width: 550px){
+  .wbtbln .tbln-bx{
+    margin: 0.8rem;
+    border-radius: 22px;
+  }
+}

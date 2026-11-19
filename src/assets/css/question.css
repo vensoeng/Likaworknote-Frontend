@@ -4,7 +4,7 @@
 }
 .wqu-box{
     position: relative;
-    display: flex;
+    /* display: flex; */
     margin: 0 auto;
     z-index: 2;
     border-top: none;

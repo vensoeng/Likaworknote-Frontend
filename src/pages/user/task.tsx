@@ -1,4 +1,5 @@
 import { useState, useEffect,  useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import getStatusClass from "../../config/getTaskStatusBackground";
 import {formatDate} from "../../config/formatData";
 
@@ -55,7 +56,7 @@ function TaskWebpage() {
 
   const [selectedTask, setSelectedTask] =
     useState<Task| null>(null);
-
+  
   //fetch for get tasks
   const fetchTask = async () => {
     try {
@@ -87,6 +88,34 @@ function TaskWebpage() {
     setSelectedTask(null);
     setIsFormOpen(true);
   };
+
+  //Get for Open form create 
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const openForm = queryParams.get("OpenForm");
+
+    if (openForm === "1") {
+      setFormMode("create");
+      setSelectedTask(null);
+      setIsFormOpen(true);
+
+      // Remove OpenForm parameter
+      queryParams.delete("OpenForm");
+
+      navigate(
+        {
+          pathname: location.pathname,
+          search: queryParams.toString()
+            ? `?${queryParams.toString()}`
+            : "",
+          hash: location.hash,
+        },
+        { replace: true }
+      );
+    }
+  }, [location.pathname, location.search]);
 
   const handleOpenEdit = (
     task: Task

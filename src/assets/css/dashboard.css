@@ -9,9 +9,9 @@
 }
 .admin-dashboard .sp02{
     margin-top: 0rem;
-    margin: 0.8rem;
+    margin: 0rem;
     overflow: hidden;
-    border-radius: 0.2rem;
+    border-radius: 0.8rem;
 }
 .admin-content{
     max-width: 1200px;
@@ -290,6 +290,9 @@ body .task-action-section .tb-section-body{
     }
     .admin-dashboard{
         margin: 0rem auto;
+    }
+    .admin-dashboard .sp02{
+        margin: 0.8rem;
     }
 }
 @media only screen and (max-width: 650px){

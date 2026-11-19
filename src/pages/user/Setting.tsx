@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
-
 import type { UserProfile } from "../../types/updateMe";
-
 import UserModel from "../../components/form/user";
 
+import GuideWebPage from "../doc/guide";
 
 import { UserEdit, Magicpen, Send2, Add, LoginCurve } from "iconsax-reactjs";
 import '../../assets/css/setting.css';
@@ -195,6 +194,8 @@ function Setting() {
             </div>
           </div>
         </div>
+        {/* how to use likaworknote  */}
+        <GuideWebPage/>
       </div>
     </div>
   );

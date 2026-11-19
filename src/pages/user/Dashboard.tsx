@@ -17,7 +17,7 @@ import {
   BrifecaseTimer,
   Send2,
   Timer,
-  Global
+  ReceiptSearch
 } from "iconsax-reactjs";
 import '../../assets/css/dashboard.css';
 import TaskService from '../../services/taskService';
@@ -464,12 +464,12 @@ function Dashboard() {
                     </blockquote>
                   </div>
                   <div className="adnvulrw-action df-r">
-                    <NavLink to='/category/tasks'
+                    <NavLink to='/type/tasks'
                       type="button"
                       className="btn"
                     >
                       <Magicpen />
-                      បន្ថែមការងារ
+                      បន្ថែមប្រភេទ
                     </NavLink>
                   </div>
                 </div>
@@ -515,7 +515,7 @@ function Dashboard() {
                       type="button"
                       className="btn"
                     >
-                      <Global />
+                      <ReceiptSearch />
                       ពិនិត្យ
                     </NavLink>
                   </div>
@@ -540,7 +540,7 @@ function Dashboard() {
                       type="button"
                       className="btn"
                     >
-                      <Global />
+                      <ReceiptSearch />
                       ពិនិត្យ
                     </NavLink>
                   </div>
@@ -565,7 +565,7 @@ function Dashboard() {
                       type="button"
                       className="btn"
                     >
-                      <Global />
+                      <ReceiptSearch />
                       ពិនិត្យ
                     </NavLink>
                   </div>
@@ -590,7 +590,7 @@ function Dashboard() {
                       type="button"
                       className="btn"
                     >
-                      <Global />
+                      <ReceiptSearch />
                       ពិនិត្យ
                     </NavLink>
                   </div>

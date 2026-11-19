@@ -67,7 +67,7 @@ function AdminLayout() {
                             <ul className='df-c'>
                                 <li>
                                     <div className="btn btn-create">
-                                        <NavLink to="/tasks" className='df-c'>
+                                        <NavLink to="/tasks?OpenForm=1" className='df-c'>
                                             <Stickynote />
                                             <span>បន្ថែមភារកិច្ច</span>
                                         </NavLink>
@@ -169,6 +169,68 @@ function AdminLayout() {
                 </div>
                 <div className="web-aside-overlay" onClick={() => handleToggleAside()}></div>
             </aside>
+            
+            {/* tab link  */}
+            <div className="wbtbln">
+                <div className="tbln-bx df-s">
+                    {/* list icon  */}
+                    <NavLink 
+                        className={({ isActive }) => isActive ? "list active" : "list"} 
+                        to="/user/dashboard"
+                    >
+                        <div className="l-bx">
+                            <div className='icon ico-sm'>
+                                <HomeHashtag />
+                            </div>
+                            <div className="txt">
+                                <p>គ្រប់គ្រង</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                    {/* list icon  */}
+                    <NavLink 
+                        className={({ isActive }) => isActive ? "list active" : "list"} 
+                        to="/tasks"
+                    >
+                        <div className="l-bx">
+                            <div className='icon ico-sm'>
+                                <Stickynote />
+                            </div>
+                            <div className="txt">
+                                <p>ភារកិច្ច</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                    {/* list icon  */}
+                    <NavLink  
+                        className={({ isActive }) => isActive ? "list active" : "list"} 
+                        to="/type/tasks"
+                    >
+                        <div className="l-bx">
+                            <div className='icon ico-sm'>
+                                <MainComponent />
+                            </div>
+                            <div className="txt">
+                                <p>ប្រភេទ</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                     {/* list icon  */}
+                    <NavLink  
+                        className={({ isActive }) => isActive ? "list active" : "list"} 
+                        to="/user/setting"
+                    >
+                        <div className="l-bx">
+                            <div className='icon ico-sm'>
+                                <Setting2 />
+                            </div>
+                            <div className="txt">
+                                <p>កំណត់</p>
+                            </div>
+                        </div>
+                    </NavLink>
+                </div>
+            </div>
         </>
     );
 }
